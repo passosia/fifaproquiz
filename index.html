@@ -13,49 +13,71 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1a2e 50%, #16213e 100%);
             color: #fff;
             min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
+            padding: 15px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(255, 215, 0, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(76, 175, 80, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
         }
 
         .container {
-            max-width: 700px;
+            max-width: 750px;
             width: 100%;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 40px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: clamp(20px, 5vw, 50px);
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            position: relative;
+            z-index: 1;
         }
 
         .header {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: clamp(25px, 5vw, 40px);
         }
 
         .header h1 {
             color: #ffd700;
-            font-size: 2.2em;
-            margin-bottom: 10px;
+            font-size: clamp(1.5em, 5vw, 2.4em);
+            margin-bottom: 12px;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            letter-spacing: 1px;
+            text-shadow: 
+                2px 2px 4px rgba(0, 0, 0, 0.5),
+                0 0 20px rgba(255, 215, 0, 0.3);
+            line-height: 1.2;
         }
 
         .header p {
             color: #ccc;
-            font-size: 1.1em;
+            font-size: clamp(0.95em, 3vw, 1.1em);
+            line-height: 1.5;
         }
 
         .trust-badges {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: clamp(8px, 2vw, 15px);
             margin: 25px 0;
             flex-wrap: wrap;
         }
@@ -63,27 +85,44 @@
         .badge {
             background: rgba(76, 175, 80, 0.15);
             border: 2px solid #4caf50;
-            border-radius: 8px;
-            padding: 8px 15px;
-            font-size: 0.85em;
+            border-radius: 10px;
+            padding: clamp(6px 12px, 2vw, 10px 18px);
+            font-size: clamp(0.75em, 2.5vw, 0.9em);
             color: #4caf50;
             font-weight: bold;
+            white-space: nowrap;
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .badge:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(76, 175, 80, 0.3);
         }
 
         .progress-bar {
             width: 100%;
-            height: 8px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
             margin-bottom: 30px;
             overflow: hidden;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         .progress-fill {
             height: 100%;
-            background: linear-gradient(90deg, #ffd700, #ffed4e);
+            background: linear-gradient(90deg, #ffd700, #ffed4e, #ffd700);
+            background-size: 200% 100%;
             width: 0%;
-            transition: width 0.3s ease;
+            transition: width 0.4s ease;
+            animation: shimmer 2s infinite;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
         }
 
         .question-container {
@@ -92,58 +131,78 @@
 
         .question-container.active {
             display: block;
-            animation: fadeIn 0.4s ease;
+            animation: slideIn 0.5s ease;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        @keyframes slideIn {
+            from { 
+                opacity: 0; 
+                transform: translateY(30px);
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0);
+            }
         }
 
         .question-number {
             color: #ffd700;
-            font-size: 0.9em;
+            font-size: clamp(0.8em, 2.5vw, 0.95em);
             font-weight: bold;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
         }
 
         .question {
-            font-size: 1.4em;
+            font-size: clamp(1.15em, 4vw, 1.5em);
             margin-bottom: 25px;
             line-height: 1.4;
+            font-weight: 600;
         }
 
         .question-tip {
-            background: rgba(255, 215, 0, 0.1);
-            border-left: 3px solid #ffd700;
-            padding: 12px 15px;
-            margin-bottom: 20px;
-            font-size: 0.95em;
+            background: rgba(255, 215, 0, 0.08);
+            border-left: 4px solid #ffd700;
+            padding: 15px;
+            margin-bottom: 25px;
+            font-size: clamp(0.85em, 2.8vw, 0.95em);
             color: #ddd;
-            border-radius: 5px;
+            border-radius: 8px;
+            line-height: 1.6;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.1);
         }
 
         .options {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 12px;
         }
 
         .option {
-            background: rgba(255, 255, 255, 0.08);
-            border: 2px solid rgba(255, 215, 0, 0.3);
-            border-radius: 12px;
-            padding: 18px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 215, 0, 0.25);
+            border-radius: 14px;
+            padding: clamp(14px, 3vw, 20px);
             cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 1.05em;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: clamp(0.9em, 3vw, 1.05em);
             position: relative;
+            line-height: 1.5;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            padding-right: 50px;
+        }
+
+        .option:active {
+            transform: scale(0.98);
         }
 
         .option:hover {
-            background: rgba(255, 215, 0, 0.15);
+            background: rgba(255, 215, 0, 0.12);
             border-color: #ffd700;
             transform: translateX(5px);
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.2);
         }
 
         .option-icon {
@@ -151,28 +210,34 @@
             right: 20px;
             top: 50%;
             transform: translateY(-50%);
-            font-size: 1.3em;
+            font-size: 1.5em;
             opacity: 0;
-            transition: opacity 0.3s;
+            transition: all 0.3s ease;
         }
 
         .option:hover .option-icon {
             opacity: 1;
+            right: 15px;
         }
 
         .analyzing-screen {
             display: none;
             text-align: center;
-            padding: 40px 20px;
+            padding: clamp(30px, 8vw, 60px) 20px;
         }
 
         .analyzing-screen.active {
             display: block;
-            animation: fadeIn 0.5s ease;
+            animation: fadeIn 0.6s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         .loading-animation {
-            font-size: 4em;
+            font-size: clamp(3em, 10vw, 4.5em);
             animation: spin 2s linear infinite;
             margin-bottom: 30px;
         }
@@ -182,26 +247,41 @@
             100% { transform: rotate(360deg); }
         }
 
+        .analyzing-screen h3 {
+            font-size: clamp(1.3em, 4vw, 1.8em);
+            margin-bottom: 15px;
+        }
+
+        .analyzing-screen p {
+            font-size: clamp(0.9em, 3vw, 1.1em);
+        }
+
         .result-container {
             display: none;
         }
 
         .result-container.active {
             display: block;
-            animation: fadeIn 0.5s ease;
+            animation: fadeIn 0.6s ease;
+        }
+
+        .result-container h2 {
+            font-size: clamp(1.4em, 5vw, 2em);
         }
 
         .radar-chart-container {
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 15px;
-            padding: 30px;
+            background: rgba(0, 0, 0, 0.25);
+            border-radius: 18px;
+            padding: clamp(20px, 5vw, 35px);
             margin: 30px 0;
+            border: 1px solid rgba(255, 215, 0, 0.15);
         }
 
         .radar-chart-container h3 {
             color: #ffd700;
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            font-size: clamp(1.2em, 4vw, 1.5em);
         }
 
         .skill-bar {
@@ -211,8 +291,9 @@
         .skill-name {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 8px;
-            font-size: 0.95em;
+            margin-bottom: 10px;
+            font-size: clamp(0.85em, 3vw, 1em);
+            gap: 10px;
         }
 
         .skill-name span:first-child {
@@ -222,75 +303,84 @@
 
         .skill-name span:last-child {
             color: #ddd;
+            white-space: nowrap;
         }
 
         .skill-progress {
-            height: 12px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
+            height: 14px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
             overflow: hidden;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         .skill-fill {
             height: 100%;
             background: linear-gradient(90deg, #4caf50, #8bc34a);
             width: 0%;
-            transition: width 1s ease;
-            border-radius: 10px;
+            transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(76, 175, 80, 0.4);
         }
 
         .skill-fill.low {
             background: linear-gradient(90deg, #ff6464, #ff8a80);
+            box-shadow: 0 0 10px rgba(255, 100, 100, 0.4);
         }
 
         .skill-fill.medium {
             background: linear-gradient(90deg, #ffd700, #ffed4e);
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
         }
 
         .time-wasted-box {
-            background: linear-gradient(135deg, rgba(255, 100, 100, 0.2), rgba(255, 50, 50, 0.1));
+            background: linear-gradient(135deg, rgba(255, 100, 100, 0.15), rgba(255, 50, 50, 0.08));
             border: 3px solid #ff6464;
-            border-radius: 15px;
-            padding: 30px;
+            border-radius: 18px;
+            padding: clamp(20px, 5vw, 35px);
             margin: 30px 0;
             text-align: center;
+            box-shadow: 0 8px 30px rgba(255, 100, 100, 0.2);
         }
 
         .time-wasted-box h3 {
             color: #ff6464;
-            font-size: 1.8em;
-            margin-bottom: 20px;
+            font-size: clamp(1.3em, 5vw, 1.9em);
+            margin-bottom: 25px;
             text-transform: uppercase;
+            text-shadow: 0 2px 10px rgba(255, 100, 100, 0.3);
         }
 
         .time-stats {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 15px;
             margin: 25px 0;
         }
 
         .time-stat {
             background: rgba(0, 0, 0, 0.4);
-            padding: 20px;
-            border-radius: 10px;
+            padding: clamp(15px, 4vw, 25px);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 215, 0, 0.2);
         }
 
         .time-stat-value {
-            font-size: 2.5em;
+            font-size: clamp(1.8em, 6vw, 2.8em);
             color: #ffd700;
             font-weight: bold;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
+            text-shadow: 0 2px 10px rgba(255, 215, 0, 0.3);
         }
 
         .time-stat-label {
             color: #ddd;
-            font-size: 0.9em;
+            font-size: clamp(0.8em, 2.5vw, 0.95em);
         }
 
         .time-wasted-box p {
             color: #fff;
-            font-size: 1.15em;
+            font-size: clamp(0.95em, 3.2vw, 1.2em);
             line-height: 1.8;
             margin: 15px 0;
         }
@@ -300,25 +390,31 @@
         }
 
         .strategic-print {
-            background: rgba(0, 0, 0, 0.4);
+            background: rgba(0, 0, 0, 0.3);
             border: 3px solid #4caf50;
-            border-radius: 15px;
-            padding: 25px;
+            border-radius: 18px;
+            padding: clamp(20px, 5vw, 30px);
             margin: 30px 0;
             text-align: center;
+            box-shadow: 0 8px 30px rgba(76, 175, 80, 0.2);
+        }
+
+        .strategic-print h3 {
+            font-size: clamp(1.3em, 4.5vw, 1.7em);
         }
 
         .strategic-print img {
             width: 100%;
-            max-width: 400px;
-            border-radius: 10px;
+            max-width: 450px;
+            border-radius: 12px;
             margin: 20px 0;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.6);
+            border: 2px solid rgba(76, 175, 80, 0.3);
         }
 
         .strategic-print-caption {
             color: #fff;
-            font-size: 1.15em;
+            font-size: clamp(0.95em, 3vw, 1.2em);
             line-height: 1.7;
             margin-top: 20px;
         }
@@ -328,23 +424,24 @@
         }
 
         .urgency-layer {
-            background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(255, 215, 0, 0.05));
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.12), rgba(255, 215, 0, 0.04));
             border: 2px solid #ffd700;
-            border-radius: 15px;
-            padding: 30px;
+            border-radius: 18px;
+            padding: clamp(20px, 5vw, 35px);
             margin: 30px 0;
+            box-shadow: 0 8px 30px rgba(255, 215, 0, 0.15);
         }
 
         .urgency-layer h3 {
             color: #ff6464;
-            font-size: 1.6em;
+            font-size: clamp(1.2em, 4.5vw, 1.7em);
             margin-bottom: 20px;
             text-align: center;
         }
 
         .urgency-layer p {
             color: #fff;
-            font-size: 1.1em;
+            font-size: clamp(0.95em, 3.2vw, 1.15em);
             line-height: 1.8;
             margin: 15px 0;
         }
@@ -355,84 +452,100 @@
 
         .comparison-box {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 15px;
             margin: 30px 0;
         }
 
         .comparison-item {
             background: rgba(255, 255, 255, 0.05);
             border: 2px solid rgba(255, 215, 0, 0.3);
-            border-radius: 12px;
-            padding: 20px;
+            border-radius: 14px;
+            padding: clamp(15px, 4vw, 25px);
             text-align: center;
+            transition: all 0.3s ease;
         }
 
         .comparison-item.highlight {
             border-color: #4caf50;
-            background: rgba(76, 175, 80, 0.1);
+            background: rgba(76, 175, 80, 0.12);
+            box-shadow: 0 6px 25px rgba(76, 175, 80, 0.2);
         }
 
         .comparison-label {
-            font-size: 0.9em;
+            font-size: clamp(0.8em, 2.5vw, 0.95em);
             color: #aaa;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
         .comparison-value {
-            font-size: 2em;
+            font-size: clamp(1.6em, 6vw, 2.2em);
             font-weight: bold;
             color: #ffd700;
+            text-shadow: 0 2px 10px rgba(255, 215, 0, 0.3);
         }
 
         .priority-tips {
-            background: linear-gradient(135deg, rgba(76, 175, 80, 0.15), rgba(46, 125, 50, 0.1));
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.15), rgba(46, 125, 50, 0.08));
             border: 2px solid #4caf50;
-            border-radius: 15px;
-            padding: 25px;
+            border-radius: 18px;
+            padding: clamp(20px, 5vw, 30px);
             margin: 30px 0;
         }
 
         .priority-tips h3 {
             color: #4caf50;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             text-align: center;
+            font-size: clamp(1.2em, 4.5vw, 1.6em);
         }
 
         .tip-item {
             background: rgba(0, 0, 0, 0.3);
-            padding: 15px;
+            padding: clamp(12px, 3vw, 18px);
             margin: 15px 0;
             border-left: 4px solid #4caf50;
-            border-radius: 8px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .tip-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 20px rgba(76, 175, 80, 0.2);
         }
 
         .tip-title {
             color: #ffd700;
             font-weight: bold;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
+            font-size: clamp(0.95em, 3vw, 1.1em);
+        }
+
+        .tip-item p {
+            font-size: clamp(0.85em, 2.8vw, 0.95em);
+            line-height: 1.7;
         }
 
         .soft-pitch {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 215, 0, 0.3);
-            border-radius: 12px;
-            padding: 25px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 18px;
+            padding: clamp(20px, 5vw, 30px);
             margin: 40px 0;
             text-align: center;
         }
 
         .soft-pitch h4 {
             color: #ffd700;
-            margin-bottom: 15px;
-            font-size: 1.5em;
+            margin-bottom: 20px;
+            font-size: clamp(1.2em, 4.5vw, 1.6em);
         }
 
         .soft-pitch p {
             color: #ddd;
-            line-height: 1.6;
+            line-height: 1.7;
             margin-bottom: 20px;
-            font-size: 1.1em;
+            font-size: clamp(0.95em, 3vw, 1.15em);
         }
 
         .soft-pitch p strong {
@@ -440,42 +553,52 @@
         }
 
         .learn-more-btn {
-            background: rgba(255, 215, 0, 0.2);
+            background: rgba(255, 215, 0, 0.15);
             border: 2px solid #ffd700;
             color: #ffd700;
-            padding: 12px 30px;
-            font-size: 1.1em;
+            padding: clamp(12px 25px, 3vw, 15px 35px);
+            font-size: clamp(1em, 3.5vw, 1.15em);
             font-weight: bold;
-            border-radius: 8px;
+            border-radius: 12px;
             cursor: pointer;
             transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.2);
         }
 
         .learn-more-btn:hover {
-            background: rgba(255, 215, 0, 0.3);
-            transform: translateY(-2px);
+            background: rgba(255, 215, 0, 0.25);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(255, 215, 0, 0.3);
+        }
+
+        .learn-more-btn:active {
+            transform: translateY(-1px);
         }
 
         .cta-button {
             background: linear-gradient(135deg, #ffd700, #ffed4e);
             color: #1a1a2e;
             border: none;
-            padding: 18px 40px;
-            font-size: 1.2em;
+            padding: clamp(15px 30px, 4vw, 20px 45px);
+            font-size: clamp(1.05em, 3.8vw, 1.25em);
             font-weight: bold;
-            border-radius: 12px;
+            border-radius: 14px;
             cursor: pointer;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-top: 30px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+            letter-spacing: 0.5px;
+            margin-top: 25px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.3);
             width: 100%;
         }
 
         .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.5);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(255, 215, 0, 0.5);
+        }
+
+        .cta-button:active {
+            transform: translateY(-2px);
         }
 
         .start-screen {
@@ -487,49 +610,62 @@
         }
 
         .start-icon {
-            font-size: 4em;
+            font-size: clamp(3em, 10vw, 4.5em);
             margin-bottom: 20px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
 
         .info-box {
-            background: rgba(255, 215, 0, 0.1);
+            background: rgba(255, 215, 0, 0.08);
             border: 2px solid rgba(255, 215, 0, 0.3);
-            border-radius: 12px;
-            padding: 20px;
+            border-radius: 14px;
+            padding: clamp(15px, 4vw, 22px);
             margin: 25px 0;
         }
 
         .info-box-title {
             color: #ffd700;
             font-weight: bold;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
+            font-size: clamp(0.95em, 3vw, 1.1em);
+        }
+
+        .info-box p {
+            font-size: clamp(0.85em, 2.8vw, 0.95em);
+            line-height: 1.8;
         }
 
         .screenshot-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
             margin: 30px 0;
         }
 
         .screenshot-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 2px solid rgba(255, 215, 0, 0.3);
-            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 2px solid rgba(255, 215, 0, 0.25);
+            border-radius: 14px;
             padding: 15px;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .screenshot-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px);
             border-color: #ffd700;
-            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.2);
+            box-shadow: 0 10px 35px rgba(255, 215, 0, 0.25);
         }
 
         .screenshot-image {
             width: 100%;
-            border-radius: 8px;
+            border-radius: 10px;
             margin-bottom: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
         }
 
         .screenshot-caption {
@@ -538,56 +674,67 @@
 
         .screenshot-caption h4 {
             color: #ffd700;
-            font-size: 1.1em;
+            font-size: clamp(1em, 3.2vw, 1.15em);
             margin-bottom: 8px;
         }
 
         .screenshot-caption p {
             color: #4caf50;
-            font-size: 1em;
+            font-size: clamp(0.9em, 2.8vw, 1.05em);
             font-weight: bold;
         }
 
         .objection-killer {
-            background: rgba(0, 0, 0, 0.4);
+            background: rgba(0, 0, 0, 0.3);
             border-radius: 12px;
-            padding: 20px;
-            margin: 25px 0;
+            padding: clamp(15px, 4vw, 22px);
+            margin: 20px 0;
+            transition: all 0.3s ease;
+        }
+
+        .objection-killer:hover {
+            transform: translateX(5px);
+            background: rgba(0, 0, 0, 0.4);
         }
 
         .objection-killer h4 {
             color: #ffd700;
-            margin-bottom: 15px;
-            font-size: 1.1em;
+            margin-bottom: 12px;
+            font-size: clamp(0.95em, 3.2vw, 1.15em);
         }
 
         .objection-killer p {
             color: #ddd;
             line-height: 1.7;
-            font-size: 0.95em;
+            font-size: clamp(0.85em, 2.8vw, 0.98em);
         }
 
         .two-options {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.04);
             border: 2px solid rgba(255, 215, 0, 0.3);
-            border-radius: 15px;
-            padding: 30px;
+            border-radius: 18px;
+            padding: clamp(20px, 5vw, 35px);
             margin: 30px 0;
         }
 
         .two-options h3 {
             color: #ffd700;
             text-align: center;
-            font-size: 1.8em;
+            font-size: clamp(1.3em, 5vw, 1.9em);
             margin-bottom: 30px;
         }
 
         .option-box {
             background: rgba(0, 0, 0, 0.3);
             border-left: 4px solid #666;
-            padding: 20px;
+            padding: clamp(15px, 4vw, 22px);
             margin: 20px 0;
-            border-radius: 8px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .option-box:hover {
+            transform: translateX(5px);
         }
 
         .option-box.bad {
@@ -596,34 +743,47 @@
 
         .option-box.good {
             border-left-color: #4caf50;
-            background: rgba(76, 175, 80, 0.1);
+            background: rgba(76, 175, 80, 0.08);
         }
 
         .option-box h4 {
             color: #ffd700;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
+            font-size: clamp(1em, 3.2vw, 1.15em);
         }
 
         .option-box p {
             color: #ddd;
-            line-height: 1.6;
+            line-height: 1.7;
+            font-size: clamp(0.85em, 2.8vw, 0.98em);
         }
 
-        @media (max-width: 600px) {
-            .container {
-                padding: 25px;
-            }
-            
-            .header h1 {
-                font-size: 1.6em;
-            }
-            
-            .question {
-                font-size: 1.2em;
+        /* Responsividade Extra */
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
             }
 
-            .comparison-box, .time-stats {
+            .container {
+                border-radius: 20px;
+            }
+
+            .option {
+                min-height: 50px;
+            }
+
+            .screenshot-grid {
                 grid-template-columns: 1fr;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .time-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .comparison-box {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
     </style>
@@ -637,12 +797,12 @@
 
         <div class="start-screen" id="startScreen">
             <div class="start-icon">🎮</div>
-            <h2 style="font-size: 1.8em; margin-bottom: 20px; color: #ffd700;">Teste Gratuito de Habilidade</h2>
-            <p style="font-size: 1.1em; margin-bottom: 20px; line-height: 1.6;">8 perguntas para identificar exatamente onde você está e o que treinar para evoluir mais rápido.</p>
+            <h2 style="font-size: clamp(1.4em, 5vw, 1.9em); margin-bottom: 20px; color: #ffd700;">Teste Gratuito de Habilidade</h2>
+            <p style="font-size: clamp(0.95em, 3vw, 1.15em); margin-bottom: 20px; line-height: 1.6;">8 perguntas para identificar exatamente onde você está e o que treinar para evoluir mais rápido.</p>
             
             <div class="info-box">
                 <div class="info-box-title">📊 O que você vai receber:</div>
-                <p style="color: #ddd; font-size: 0.95em; line-height: 1.6;">
+                <p style="color: #ddd;">
                     ✅ Análise detalhada das suas habilidades<br>
                     ✅ Diagnóstico de tempo perdido<br>
                     ✅ 3 dicas práticas personalizadas<br>
@@ -650,9 +810,9 @@
                 </p>
             </div>
 
-            <div style="background: rgba(255, 215, 0, 0.15); border: 2px solid #ffd700; border-radius: 12px; padding: 20px; margin: 25px 0;">
-                <p style="color: #ffd700; font-size: 1.05em; font-weight: bold; margin-bottom: 10px;">⚠️ Seja honesto nas respostas</p>
-                <p style="color: #ddd; font-size: 0.95em; line-height: 1.6;">Quanto mais honesto, mais preciso será seu diagnóstico e melhores serão as dicas personalizadas.</p>
+            <div style="background: rgba(255, 215, 0, 0.12); border: 2px solid #ffd700; border-radius: 14px; padding: clamp(15px, 4vw, 22px); margin: 25px 0;">
+                <p style="color: #ffd700; font-size: clamp(0.95em, 3vw, 1.1em); font-weight: bold; margin-bottom: 10px;">⚠️ Seja honesto nas respostas</p>
+                <p style="color: #ddd; font-size: clamp(0.85em, 2.8vw, 0.98em); line-height: 1.6;">Quanto mais honesto, mais preciso será seu diagnóstico e melhores serão as dicas personalizadas.</p>
             </div>
 
             <div class="trust-badges">
@@ -696,7 +856,6 @@
                     <div id="skillBars"></div>
                 </div>
 
-                <!-- CALCULADORA DE TEMPO PERDIDO -->
                 <div class="time-wasted-box" id="timeWastedBox">
                     <h3>⏰ QUANTO TEMPO VOCÊ JÁ DESPERDIÇOU?</h3>
                     
@@ -715,12 +874,11 @@
                     
                     <p>Enquanto isso, jogadores que estavam PIOR que você subiram 2-3 divisões no mesmo período.</p>
                     
-                    <p style="font-size: 1.25em; color: #ff6464; font-weight: bold; margin-top: 20px;">Até quando você vai continuar fazendo a mesma merda esperando resultados diferentes?</p>
+                    <p style="font-size: clamp(1.05em, 3.8vw, 1.3em); color: #ff6464; font-weight: bold; margin-top: 20px;">Até quando você vai continuar fazendo a mesma merda esperando resultados diferentes?</p>
                 </div>
 
-                <!-- PRINT ESTRATÉGICO (NATHAN) -->
                 <div class="strategic-print">
-                    <h3 style="color: #4caf50; font-size: 1.6em; margin-bottom: 15px;">📱 Prova Real</h3>
+                    <h3 style="color: #4caf50; margin-bottom: 15px;">📱 Prova Real</h3>
                     <img src="https://i.ibb.co/Xw8Vx3W/Captura-de-Tela-2025-11-01-a-s-17-26-18.png" alt="Nathan">
                     <div class="strategic-print-caption">
                         <strong>Nathan</strong> estava TRAVADO exatamente como você. Aplicou o método e em 3 semanas fez 15 wins "fácil" (palavras dele).<br><br>
@@ -728,7 +886,6 @@
                     </div>
                 </div>
 
-                <!-- CAMADA DE URGÊNCIA -->
                 <div class="urgency-layer">
                     <h3>⚠️ REALIDADE DURA:</h3>
                     <p>Baseado nas suas respostas, você está cometendo os <strong>mesmos erros que 83% dos jogadores da sua divisão</strong> fazem.</p>
@@ -737,7 +894,7 @@
                     
                     <p>Ou você pode seguir o passo-a-passo testado por <strong>500+ jogadores</strong> que já estavam exatamente onde você está - e hoje dominam suas divisões.</p>
                     
-                    <p style="color: #ffd700; font-weight: bold; font-size: 1.2em; margin-top: 20px;">A escolha é sua. Mas o relógio tá correndo.</p>
+                    <p style="color: #ffd700; font-weight: bold; font-size: clamp(1.05em, 3.5vw, 1.25em); margin-top: 20px;">A escolha é sua. Mas o relógio tá correndo.</p>
                 </div>
 
                 <div class="priority-tips" id="priorityTips">
@@ -749,14 +906,13 @@
                     <h4>⚠️ Aqui está a verdade que ninguém te conta:</h4>
                     <p>Você pode continuar <strong>tentando descobrir sozinho</strong> (como fez até agora) e levar MESES para subir 1 divisão...</p>
                     <p>Ou pode seguir o <strong>método testado por 500+ jogadores</strong> que já estavam exatamente onde você está - e hoje dominam suas divisões.</p>
-                    <p style="font-size: 1.05em; color: #ffd700; font-weight: bold; margin-top: 25px;">A escolha é sua. Mas os resultados não mentem 👇</p>
+                    <p style="font-size: clamp(0.95em, 3.2vw, 1.1em); color: #ffd700; font-weight: bold; margin-top: 25px;">A escolha é sua. Mas os resultados não mentem 👇</p>
                     <button class="learn-more-btn" onclick="showCourseInfo()">🚀 QUERO MELHORAR RÁPIDO</button>
                 </div>
 
                 <div id="courseInfo" style="display: none; margin-top: 30px;">
-                    <!-- MAIS PRINTS -->
-                    <div style="background: rgba(0, 0, 0, 0.3); border-radius: 15px; padding: 30px; margin-bottom: 30px;">
-                        <h3 style="color: #ffd700; text-align: center; margin-bottom: 25px;">📱 Mais Prints Reais de Alunos</h3>
+                    <div style="background: rgba(0, 0, 0, 0.3); border-radius: 18px; padding: clamp(20px, 5vw, 35px); margin-bottom: 30px;">
+                        <h3 style="color: #ffd700; text-align: center; margin-bottom: 25px; font-size: clamp(1.3em, 5vw, 1.7em);">📱 Mais Prints Reais de Alunos</h3>
                         
                         <div class="screenshot-grid">
                             <div class="screenshot-card">
@@ -792,14 +948,13 @@
                             </div>
                         </div>
 
-                        <p style="text-align: center; color: #aaa; font-size: 0.9em; margin-top: 20px;">
+                        <p style="text-align: center; color: #aaa; font-size: clamp(0.8em, 2.5vw, 0.95em); margin-top: 20px;">
                             ☝️ Prints reais de mensagens recebidas
                         </p>
                     </div>
 
-                    <!-- NEUTRALIZAR OBJEÇÕES -->
-                    <div style="background: rgba(255, 215, 0, 0.05); border: 2px solid rgba(255, 215, 0, 0.3); border-radius: 15px; padding: 25px; margin: 25px 0;">
-                        <h3 style="color: #ffd700; text-align: center; margin-bottom: 25px;">❓ Perguntas Frequentes</h3>
+                    <div style="background: rgba(255, 215, 0, 0.05); border: 2px solid rgba(255, 215, 0, 0.3); border-radius: 18px; padding: clamp(20px, 5vw, 30px); margin: 25px 0;">
+                        <h3 style="color: #ffd700; text-align: center; margin-bottom: 25px; font-size: clamp(1.2em, 4.5vw, 1.6em);">❓ Perguntas Frequentes</h3>
                         
                         <div class="objection-killer">
                             <h4>🕐 "Não tenho tempo pra curso"</h4>
@@ -822,7 +977,6 @@
                         </div>
                     </div>
 
-                    <!-- DUAS OPÇÕES -->
                     <div class="two-options">
                         <h3>🎯 DUAS OPÇÕES PRA VOCÊ:</h3>
 
@@ -843,15 +997,14 @@
                         </div>
                     </div>
 
-                    <!-- DETALHES DO CURSO -->
-                    <div style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 215, 0, 0.3); border-radius: 15px; padding: 30px;">
-                        <h3 style="color: #ffd700; text-align: center; margin-bottom: 25px;">🎓 Programa de Treinamento Completo</h3>
+                    <div style="background: rgba(255, 255, 255, 0.04); border: 2px solid rgba(255, 215, 0, 0.3); border-radius: 18px; padding: clamp(20px, 5vw, 35px);">
+                        <h3 style="color: #ffd700; text-align: center; margin-bottom: 25px; font-size: clamp(1.3em, 5vw, 1.7em);">🎓 Programa de Treinamento Completo</h3>
                         
                         <div style="margin: 25px 0;">
-                            <p style="color: #ddd; line-height: 1.8; margin-bottom: 15px;">
+                            <p style="color: #ddd; line-height: 1.8; margin-bottom: 15px; font-size: clamp(0.9em, 3vw, 1.05em);">
                                 Mais de 500 jogadores usaram este método para subir de divisão. O que está incluso:
                             </p>
-                            <ul style="color: #ddd; line-height: 2; list-style: none; padding-left: 0;">
+                            <ul style="color: #ddd; line-height: 2; list-style: none; padding-left: 0; font-size: clamp(0.85em, 2.8vw, 0.98em);">
                                 <li>✅ 7 módulos completos (fundamentos ao avançado)</li>
                                 <li>✅ Táticas META atualizadas semanalmente</li>
                                 <li>✅ Grupo VIP no Discord</li>
@@ -862,22 +1015,22 @@
                         </div>
 
                         <div style="text-align: center; margin: 30px 0;">
-                            <div style="font-size: 2.5em; color: #4caf50; font-weight: bold; margin-bottom: 5px;">
+                            <div style="font-size: clamp(1.8em, 7vw, 2.8em); color: #4caf50; font-weight: bold; margin-bottom: 5px;">
                                 12x R$ 20,69
                             </div>
-                            <p style="font-size: 1em; color: #ddd; margin-top: 10px;">ou R$ 200,00 à vista</p>
+                            <p style="font-size: clamp(0.9em, 3vw, 1.05em); color: #ddd; margin-top: 10px;">ou R$ 200,00 à vista</p>
                         </div>
 
-                        <div style="background: rgba(76, 175, 80, 0.15); border: 2px solid #4caf50; border-radius: 12px; padding: 20px; margin: 20px 0;">
-                            <p style="color: #4caf50; font-weight: bold; text-align: center; margin-bottom: 10px;">🛡️ Garantia de 7 Dias</p>
-                            <p style="color: #ddd; text-align: center; font-size: 0.95em;">Se não gostar, devolvemos 100% do valor. Sem perguntas.</p>
+                        <div style="background: rgba(76, 175, 80, 0.15); border: 2px solid #4caf50; border-radius: 14px; padding: clamp(15px, 4vw, 22px); margin: 20px 0;">
+                            <p style="color: #4caf50; font-weight: bold; text-align: center; margin-bottom: 10px; font-size: clamp(0.95em, 3vw, 1.1em);">🛡️ Garantia de 7 Dias</p>
+                            <p style="color: #ddd; text-align: center; font-size: clamp(0.85em, 2.8vw, 0.98em);">Se não gostar, devolvemos 100% do valor. Sem perguntas.</p>
                         </div>
 
                         <button class="cta-button" onclick="goToCheckout()">
                             Quero Melhorar Agora
                         </button>
 
-                        <p style="text-align: center; margin-top: 15px; color: #aaa; font-size: 0.85em;">
+                        <p style="text-align: center; margin-top: 15px; color: #aaa; font-size: clamp(0.75em, 2.3vw, 0.9em);">
                             Acesso liberado imediatamente após pagamento
                         </p>
                     </div>
@@ -972,7 +1125,7 @@
 
         let currentQuestion = 0;
         let totalScore = 0;
-        let timeStuck = 1; // meses travado
+        let timeStuck = 1;
         let skillScores = {
             fundamentos: 50,
             táticas: 50,
@@ -1069,7 +1222,6 @@
             const option = questions[currentQuestion].options[optionIndex];
             totalScore += option.points;
             
-            // Captura tempo travado da primeira pergunta
             if (currentQuestion === 0 && option.timeMonths) {
                 timeStuck = option.timeMonths;
             }
@@ -1113,10 +1265,9 @@
             document.getElementById('userScore').textContent = finalScore;
             document.getElementById('avgScore').textContent = avgDivScore;
             
-            // Calculadora de tempo
             const matchesPerMonth = 40;
             const totalMatches = Math.round(timeStuck * matchesPerMonth);
-            const hoursPerMatch = 0.25; // 15min
+            const hoursPerMatch = 0.25;
             const totalHours = Math.round(totalMatches * hoursPerMatch);
             
             document.getElementById('matchesPlayed').textContent = totalMatches;
@@ -1169,8 +1320,8 @@
                 html += `
                     <div class="tip-item">
                         <div class="tip-title">${index + 1}. ${tip.title}</div>
-                        <p style="color: #ddd; margin: 10px 0; font-size: 0.95em;">${tip.why}</p>
-                        <p style="color: #4caf50; margin-top: 12px; font-weight: 500;"><strong>Ação:</strong> ${tip.tip}</p>
+                        <p style="color: #ddd; margin: 10px 0; font-size: clamp(0.85em, 2.8vw, 0.95em);">${tip.why}</p>
+                        <p style="color: #4caf50; margin-top: 12px; font-weight: 500; font-size: clamp(0.85em, 2.8vw, 0.95em);"><strong>Ação:</strong> ${tip.tip}</p>
                     </div>
                 `;
             });
