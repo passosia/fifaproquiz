@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
@@ -25,7 +24,6 @@
     <meta name="description" content="Análise gratuita de habilidade no FIFA. Descubra seus pontos fracos e receba um plano personalizado para evoluir.">
     
     <title>Quiz FIFA - Análise de Habilidade</title>
-    <link rel="icon" href="...">
     <style>
         * {
             margin: 0;
@@ -499,68 +497,6 @@
             color: #ffd700;
         }
 
-        .strategic-print {
-            background: rgba(0, 0, 0, 0.3);
-            border: 3px solid #4caf50;
-            border-radius: 16px;
-            padding: 25px 20px;
-            margin: 25px 0;
-            text-align: center;
-            box-shadow: 0 8px 30px rgba(76, 175, 80, 0.2);
-        }
-
-        .strategic-print h3 {
-            font-size: clamp(1.2em, 4.8vw, 1.7em);
-        }
-
-        .strategic-print img {
-            width: 100%;
-            max-width: 450px;
-            border-radius: 12px;
-            margin: 18px 0;
-            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.6);
-            border: 2px solid rgba(76, 175, 80, 0.3);
-        }
-
-        .strategic-print-caption {
-            color: #fff;
-            font-size: clamp(0.9em, 3.3vw, 1.2em);
-            line-height: 1.7;
-            margin-top: 18px;
-        }
-
-        .strategic-print-caption strong {
-            color: #ffd700;
-        }
-
-        .urgency-layer {
-            background: linear-gradient(135deg, rgba(255, 215, 0, 0.12), rgba(255, 215, 0, 0.04));
-            border: 2px solid #ffd700;
-            border-radius: 16px;
-            padding: 25px 20px;
-            margin: 25px 0;
-            box-shadow: 0 8px 30px rgba(255, 215, 0, 0.15);
-        }
-
-        .urgency-layer h3 {
-            color: #ff6464;
-            font-size: clamp(1.1em, 4.8vw, 1.7em);
-            margin-bottom: 18px;
-            text-align: center;
-            line-height: 1.3;
-        }
-
-        .urgency-layer p {
-            color: #fff;
-            font-size: clamp(0.9em, 3.5vw, 1.15em);
-            line-height: 1.7;
-            margin: 12px 0;
-        }
-
-        .urgency-layer strong {
-            color: #ffd700;
-        }
-
         .comparison-box {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -594,73 +530,6 @@
             font-weight: bold;
             color: #ffd700;
             text-shadow: 0 2px 10px rgba(255, 215, 0, 0.3);
-        }
-
-        .priority-tips {
-            background: linear-gradient(135deg, rgba(76, 175, 80, 0.15), rgba(46, 125, 50, 0.08));
-            border: 2px solid #4caf50;
-            border-radius: 16px;
-            padding: 25px 20px;
-            margin: 25px 0;
-        }
-
-        .priority-tips h3 {
-            color: #4caf50;
-            margin-bottom: 20px;
-            text-align: center;
-            font-size: clamp(1.1em, 4.8vw, 1.6em);
-        }
-
-        .tip-item {
-            background: rgba(0, 0, 0, 0.3);
-            padding: 15px;
-            margin: 12px 0;
-            border-left: 4px solid #4caf50;
-            border-radius: 10px;
-            transition: all 0.2s ease;
-        }
-
-        .tip-item:active {
-            transform: scale(0.98);
-        }
-
-        .tip-title {
-            color: #ffd700;
-            font-weight: bold;
-            margin-bottom: 8px;
-            font-size: clamp(0.9em, 3.3vw, 1.1em);
-        }
-
-        .tip-item p {
-            font-size: clamp(0.8em, 3vw, 0.95em);
-            line-height: 1.7;
-        }
-
-        .soft-pitch {
-            background: rgba(255, 255, 255, 0.04);
-            border: 2px solid rgba(255, 215, 0, 0.3);
-            border-radius: 16px;
-            padding: 25px 20px;
-            margin: 30px 0;
-            text-align: center;
-        }
-
-        .soft-pitch h4 {
-            color: #ffd700;
-            margin-bottom: 18px;
-            font-size: clamp(1.1em, 4.8vw, 1.6em);
-            line-height: 1.3;
-        }
-
-        .soft-pitch p {
-            color: #ddd;
-            line-height: 1.7;
-            margin-bottom: 18px;
-            font-size: clamp(0.9em, 3.3vw, 1.15em);
-        }
-
-        .soft-pitch p strong {
-            color: #ffd700;
         }
 
         .cta-button {
@@ -728,234 +597,38 @@
             line-height: 1.8;
         }
 
-        .screenshot-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 18px;
-            margin: 25px 0;
-        }
-
-        .screenshot-card {
-            background: rgba(255, 255, 255, 0.04);
-            border: 2px solid rgba(255, 215, 0, 0.25);
-            border-radius: 12px;
-            padding: 12px;
-            transition: all 0.3s ease;
-        }
-
-        .screenshot-card:active {
-            transform: scale(0.98);
-        }
-
-        .screenshot-image {
-            width: 100%;
-            border-radius: 10px;
-            margin-bottom: 12px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-        }
-
-        .screenshot-caption {
-            text-align: center;
-        }
-
-        .screenshot-caption h4 {
-            color: #ffd700;
-            font-size: clamp(0.95em, 3.5vw, 1.15em);
-            margin-bottom: 6px;
-        }
-
-        .screenshot-caption p {
-            color: #4caf50;
-            font-size: clamp(0.85em, 3vw, 1.05em);
-            font-weight: bold;
-        }
-
-        .objection-killer {
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 12px;
-            padding: 15px;
-            margin: 15px 0;
-            transition: all 0.2s ease;
-        }
-
-        .objection-killer:active {
-            transform: scale(0.98);
-        }
-
-        .objection-killer h4 {
-            color: #ffd700;
-            margin-bottom: 10px;
-            font-size: clamp(0.9em, 3.5vw, 1.15em);
-        }
-
-        .objection-killer p {
-            color: #ddd;
-            line-height: 1.7;
-            font-size: clamp(0.8em, 3vw, 0.98em);
-        }
-
-        .two-options {
-            background: rgba(255, 255, 255, 0.04);
-            border: 2px solid rgba(255, 215, 0, 0.3);
+        .cta-primary {
+            background: linear-gradient(135deg, #4caf50, #45a049);
+            padding: 30px 20px;
             border-radius: 16px;
-            padding: 25px 20px;
-            margin: 25px 0;
-        }
-
-        .two-options h3 {
-            color: #ffd700;
-            text-align: center;
-            font-size: clamp(1.2em, 5.2vw, 1.9em);
-            margin-bottom: 25px;
-            line-height: 1.3;
-        }
-
-        .option-box {
-            background: rgba(0, 0, 0, 0.3);
-            border-left: 4px solid #666;
-            padding: 18px;
-            margin: 18px 0;
-            border-radius: 10px;
-            transition: all 0.2s ease;
-        }
-
-        .option-box:active {
-            transform: scale(0.98);
-        }
-
-        .option-box.bad {
-            border-left-color: #ff6464;
-        }
-
-        .option-box.good {
-            border-left-color: #4caf50;
-            background: rgba(76, 175, 80, 0.08);
-        }
-
-        .option-box h4 {
-            color: #ffd700;
-            margin-bottom: 10px;
-            font-size: clamp(0.95em, 3.5vw, 1.15em);
-        }
-
-        .option-box p {
-            color: #ddd;
-            line-height: 1.7;
-            font-size: clamp(0.8em, 3vw, 0.98em);
-        }
-
-        .creator-badge {
-            background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(255, 215, 0, 0.05));
-            border: 3px solid #ffd700;
-            border-radius: 16px;
-            padding: 25px 20px;
             margin: 30px 0;
             text-align: center;
-            box-shadow: 0 8px 30px rgba(255, 215, 0, 0.2);
+            box-shadow: 0 10px 40px rgba(76, 175, 80, 0.4);
         }
 
-        .creator-badge h3 {
-            color: #ffd700;
-            font-size: clamp(1.2em, 5vw, 1.8em);
-            margin-bottom: 18px;
-            line-height: 1.3;
-        }
-
-        .creator-badge p {
+        .cta-primary h3 {
             color: #fff;
-            font-size: clamp(0.9em, 3.5vw, 1.15em);
-            line-height: 1.7;
-            margin: 12px 0;
-        }
-
-        .creator-badge strong {
-            color: #4caf50;
-            font-size: 1.1em;
-        }
-
-        .stats-highlight {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            margin: 20px 0;
-        }
-
-        .stat-box {
-            background: rgba(0, 0, 0, 0.4);
-            padding: 18px 12px;
-            border-radius: 12px;
-            border: 2px solid rgba(76, 175, 80, 0.3);
-            text-align: center;
-        }
-
-        .stat-number {
-            font-size: clamp(1.8em, 8vw, 2.5em);
-            color: #4caf50;
-            font-weight: bold;
-            margin-bottom: 8px;
-            text-shadow: 0 2px 10px rgba(76, 175, 80, 0.4);
-        }
-
-        .stat-label {
-            color: #ddd;
-            font-size: clamp(0.75em, 2.8vw, 0.9em);
-            line-height: 1.4;
-        }
-
-        .guarantee-box {
-            background: linear-gradient(135deg, rgba(76, 175, 80, 0.2), rgba(46, 125, 50, 0.1));
-            border: 3px solid #4caf50;
-            border-radius: 16px;
-            padding: 25px 20px;
-            margin: 25px 0;
-            text-align: center;
-            box-shadow: 0 8px 30px rgba(76, 175, 80, 0.3);
-        }
-
-        .guarantee-box h3 {
-            color: #4caf50;
             font-size: clamp(1.3em, 5.5vw, 2em);
             margin-bottom: 15px;
-            text-transform: uppercase;
             line-height: 1.3;
         }
 
-        .guarantee-box p {
+        .cta-primary p {
             color: #fff;
-            font-size: clamp(0.95em, 3.8vw, 1.25em);
-            line-height: 1.7;
-            margin: 10px 0;
-        }
-
-        .guarantee-box p strong {
-            color: #ffd700;
-        }
-
-        .final-choice {
-            background: rgba(0, 0, 0, 0.4);
-            border: 3px solid #ffd700;
-            border-radius: 16px;
-            padding: 30px 20px;
-            margin: 30px 0;
-            text-align: center;
-        }
-
-        .final-choice h3 {
-            color: #ff6464;
-            font-size: clamp(1.3em, 5.5vw, 2em);
+            font-size: clamp(1em, 4vw, 1.3em);
             margin-bottom: 25px;
-            line-height: 1.3;
+            line-height: 1.6;
         }
 
-        .final-choice p {
-            color: #ddd;
-            font-size: clamp(0.95em, 3.8vw, 1.2em);
-            line-height: 1.8;
-            margin: 15px 0;
+        .cta-primary .cta-button {
+            background: #ffd700;
+            color: #1a1a2e;
         }
 
-        .final-choice strong {
-            color: #ffd700;
+        .cta-primary .price-note {
+            color: rgba(255,255,255,0.9);
+            font-size: 0.9em;
+            margin-top: 15px;
         }
 
         .price-anchor {
@@ -989,12 +662,6 @@
             .option {
                 min-height: 50px;
                 padding: 14px 40px 14px 14px;
-            }
-        }
-
-        @media (min-width: 600px) {
-            .screenshot-grid {
-                grid-template-columns: repeat(2, 1fr);
             }
         }
 
@@ -1095,228 +762,246 @@
                         </div>
                     </div>
 
-                    <p>Isso é <strong id="hoursText">X HORAS</strong> da sua vida tentando descobrir sozinho o que outros jogadores aprenderam em 2 semanas.</p>
+                    <p>Isso são <strong id="hoursText">X HORAS</strong> da sua vida tentando descobrir sozinho.</p>
                     
-                    <p><strong>Enquanto você perdeu esse tempo...</strong> Jogadores que estavam PIOR que você aplicaram o método correto e subiram 2-3 divisões no mesmo período.</p>
+                    <p><strong>Enquanto você perdeu esse tempo...</strong> Jogadores que estavam PIOR que você aplicaram o método correto e subiram 2-3 divisões.</p>
                     
-                    <p style="font-size: clamp(1em, 4vw, 1.3em); color: #ffd700; font-weight: bold; margin-top: 18px;">A diferença? Eles pararam de tentar sozinhos e seguiram um sistema testado.</p>
+                    <p style="font-size: clamp(1em, 4vw, 1.3em); color: #ffd700; font-weight: bold; margin-top: 18px;">A diferença? Eles pararam de tentar sozinhos.</p>
                 </div>
 
-                <div class="strategic-print">
-                    <h3 style="color: #4caf50; margin-bottom: 12px;">📱 Prova Real</h3>
-                    <img src="https://i.ibb.co/Xw8Vx3W/Captura-de-Tela-2025-11-01-a-s-17-26-18.png" alt="Nathan">
-                    <div class="strategic-print-caption">
-                        <strong>Nathan</strong> estava TRAVADO exatamente como você. Aplicou o método e em 3 semanas fez 15 wins "fácil" (palavras dele).<br><br>
-                        A diferença entre você e ele? <strong>Ele decidiu parar de tentar sozinho.</strong>
-                    </div>
-                </div>
-
-                <div class="urgency-layer">
-                    <h3>⚠️ REALIDADE DURA:</h3>
-                    <p>Baseado nas suas respostas, você está cometendo os <strong>mesmos erros que 83% dos jogadores da sua divisão</strong> fazem.</p>
+                <!-- 3 DICAS GRATUITAS QUE FUNCIONAM -->
+                <div style="background: linear-gradient(135deg, rgba(76, 175, 80, 0.15), rgba(46, 125, 50, 0.08)); border: 2px solid #4caf50; border-radius: 16px; padding: 25px 20px; margin: 25px 0;">
+                    <h3 style="color: #4caf50; margin-bottom: 15px; text-align: center; font-size: clamp(1.2em, 5vw, 1.7em); line-height: 1.3;">
+                        🎁 3 Dicas que Você Pode Aplicar HOJE
+                    </h3>
                     
-                    <p>O problema? Sem método correto, você pode continuar tentando sozinho e daqui <strong>3 meses estar no MESMO lugar</strong> (ou pior, ainda mais frustrado).</p>
-                    
-                    <p>Ou você pode seguir o passo-a-passo testado por <strong>3.300+ jogadores</strong> que já estavam exatamente onde você está - e hoje dominam suas divisões.</p>
-                    
-                    <p style="color: #ffd700; font-weight: bold; font-size: clamp(1em, 3.8vw, 1.25em); margin-top: 18px;">A escolha é sua. Mas o relógio tá correndo.</p>
-                </div>
+                    <p style="color: #ddd; text-align: center; font-size: clamp(0.85em, 3.2vw, 1.05em); margin-bottom: 25px; line-height: 1.6;">
+                        Baseado no seu resultado, essas são as <strong style="color: #ffd700;">3 mudanças mais rápidas</strong> para você ver melhora <strong style="color: #4caf50;">HOJE MESMO</strong>:
+                    </p>
 
-                <div class="priority-tips" id="priorityTips">
-                    <h3>🎯 Top 3 Prioridades Para Treinar</h3>
-                    <div id="tipsContent"></div>
-                </div>
-
-                <div class="soft-pitch">
-                    <h4>⚠️ Aqui está a verdade que ninguém te conta:</h4>
-                    <p>Você pode continuar <strong>tentando descobrir sozinho</strong> (como fez até agora) e levar MESES para subir 1 divisão...</p>
-                    <p>Ou pode seguir o <strong>método testado por 3.300+ jogadores</strong> que já estavam exatamente onde você está - e hoje dominam suas divisões.</p>
-                    <p style="font-size: clamp(0.9em, 3.5vw, 1.1em); color: #ffd700; font-weight: bold; margin-top: 22px;">A escolha é sua. Mas os resultados não mentem 👇</p>
-                </div>
-
-                <div style="margin-top: 25px;">
-                    <div style="background: rgba(0, 0, 0, 0.3); border-radius: 16px; padding: 25px 20px; margin-bottom: 25px;">
-                        <h3 style="color: #ffd700; text-align: center; margin-bottom: 22px; font-size: clamp(1.2em, 5vw, 1.7em); line-height: 1.3;">📱 Mais Prints Reais de Alunos</h3>
-                        
-                        <div class="screenshot-grid">
-                            <div class="screenshot-card">
-                                <img src="https://i.ibb.co/tMrg9nhn/Captura-de-Tela-2025-11-01-a-s-17-18-39.png" alt="Aluno" class="screenshot-image">
-                                <div class="screenshot-caption">
-                                    <h4>"Antes tomava 3-4 gols"</h4>
-                                    <p>🛡️ Agora: jogos sem gol</p>
-                                </div>
-                            </div>
-
-                            <div class="screenshot-card">
-                                <img src="https://i.ibb.co/9PDhnbK/Captura-de-Tela-2025-11-01-a-s-17-24-09.png" alt="Francisco" class="screenshot-image">
-                                <div class="screenshot-caption">
-                                    <h4>Francisco - "11 wins"</h4>
-                                    <p>🏆 Resultado: 18 vitórias</p>
-                                </div>
-                            </div>
-
-                            <div class="screenshot-card">
-                                <img src="https://i.ibb.co/5X4M9XHx/Captura-de-Tela-2025-11-01-a-s-17-28-24.png" alt="Eduardo" class="screenshot-image">
-                                <div class="screenshot-caption">
-                                    <h4>Eduardo - "11 wins"</h4>
-                                    <p>📈 Salto: 11 → 16 vitórias</p>
-                                </div>
-                            </div>
-
-                            <div class="screenshot-card">
-                                <img src="https://i.ibb.co/4wqK9C7W/Captura-de-Tela-2025-11-01-a-s-17-30-35.png" alt="Aluno" class="screenshot-image">
-                                <div class="screenshot-caption">
-                                    <h4>"Era o pior do grupo"</h4>
-                                    <p>🔥 Virou o MELHOR</p>
-                                </div>
-                            </div>
+                    <div style="background: rgba(0, 0, 0, 0.3); padding: 18px; margin: 15px 0; border-left: 4px solid #4caf50; border-radius: 10px;">
+                        <div style="color: #ffd700; font-weight: bold; margin-bottom: 10px; font-size: clamp(0.95em, 3.5vw, 1.15em);">
+                            1️⃣ Regra dos 3 Segundos (Fundamentos)
                         </div>
-
-                        <p style="text-align: center; color: #aaa; font-size: clamp(0.75em, 2.8vw, 0.95em); margin-top: 18px;">
-                            ☝️ Prints reais de mensagens recebidas
+                        <p style="color: #ddd; font-size: clamp(0.85em, 3.2vw, 1.05em); line-height: 1.7; margin-bottom: 10px;">
+                            <strong style="color: #4caf50;">O QUE FAZER:</strong> Nunca corra com a bola por mais de 3 segundos sem passar. Se segurar muito, você perde posse.
+                        </p>
+                        <p style="color: #aaa; font-size: clamp(0.8em, 3vw, 0.95em); line-height: 1.6; font-style: italic;">
+                            💡 Aplique nas próximas 3 partidas e conte quantas vezes você perde bola por segurar demais. Você vai se assustar.
                         </p>
                     </div>
 
-                    <div class="creator-badge">
-                        <h3>🏆 Criado por ProPlayer Top 3 Mundial</h3>
-                        <p>Este método NÃO foi criado por qualquer pessoa. Foi desenvolvido por um <strong>ProPlayer Top 3 Mundial</strong>, com anos de experiência competitiva no mais alto nível.</p>
-                        
-                        <div class="stats-highlight">
-                            <div class="stat-box">
-                                <div class="stat-number">TOP 3</div>
-                                <div class="stat-label">Ranking Mundial</div>
-                            </div>
-                            <div class="stat-box">
-                                <div class="stat-number">3.300+</div>
-                                <div class="stat-label">Alunos Formados</div>
-                            </div>
+                    <div style="background: rgba(0, 0, 0, 0.3); padding: 18px; margin: 15px 0; border-left: 4px solid #4caf50; border-radius: 10px;">
+                        <div style="color: #ffd700; font-weight: bold; margin-bottom: 10px; font-size: clamp(0.95em, 3.5vw, 1.15em);">
+                            2️⃣ Defender com L2/LT PRIMEIRO (Defesa)
                         </div>
-
-                        <p style="margin-top: 18px;">Não é teoria de YouTube. É o <strong>mesmo método usado nos campeonatos profissionais</strong>, adaptado para você dominar seu nível.</p>
-                        
-                        <p style="color: #4caf50; font-weight: bold; font-size: clamp(0.95em, 3.5vw, 1.15em); margin-top: 18px;">Mais de 3.300 jogadores já transformaram seu jogo com este treinamento.</p>
-                    </div>
-
-                    <div style="background: rgba(255, 215, 0, 0.05); border: 2px solid rgba(255, 215, 0, 0.3); border-radius: 16px; padding: 25px 20px; margin: 22px 0;">
-                        <h3 style="color: #ffd700; text-align: center; margin-bottom: 22px; font-size: clamp(1.1em, 4.8vw, 1.6em); line-height: 1.3;">❓ Perguntas Frequentes</h3>
-                        
-                        <div class="objection-killer">
-                            <h4>🕐 "Não tenho tempo pra curso"</h4>
-                            <p>Os módulos são de 5-15min. Você assiste no tempo de 2-3 partidas. E aplica IMEDIATAMENTE. Não é teoria chata, é treino direto ao ponto. Jogadores veem resultado em 1 semana.</p>
-                        </div>
-
-                        <div class="objection-killer">
-                            <h4>😤 "Já tentei curso antes e não funcionou"</h4>
-                            <p>Provavelmente era aqueles genéricos do YouTube. Aqui não tem enrolação: cada módulo tem EXERCÍCIO PRÁTICO no arena + análise de 1 partida sua. Você não só aprende, você TREINA com feedback. Diferença brutal.</p>
-                        </div>
-
-                        <div class="objection-killer">
-                            <h4>💰 "Tá caro"</h4>
-                            <p>R$ 12,10 por mês = menos que 1 lanche. Quantas horas você já perdeu tentando sozinho? Quanto vale subir 2-3 divisões? A pergunta certa é: quanto custa continuar travado? E olha, esse é o preço de BLACK FRIDAY - depois volta ao normal.</p>
-                        </div>
-
-                        <div class="objection-killer">
-                            <h4>🤔 "Será que funciona pra mim?"</h4>
-                            <p>Garantia de 7 dias. Se não gostar, devolvo 100% sem perguntas. Você literalmente não tem nada a perder. Só tem a ganhar divisões.</p>
-                        </div>
-                    </div>
-
-                    <div class="two-options">
-                        <h3>🎯 DUAS OPÇÕES PRA VOCÊ:</h3>
-
-                        <div class="option-box bad">
-                            <h4>OPÇÃO 1: Continuar testando sozinho</h4>
-                            <p>→ Vai funcionar? Talvez. Em quanto tempo? Ninguém sabe.<br>
-                            → Mais 3-6 meses na mesma divisão.<br>
-                            → Mais centenas de horas desperdiçadas.<br>
-                            → Mesma frustração de sempre.</p>
-                        </div>
-
-                        <div class="option-box good">
-                            <h4>OPÇÃO 2: Seguir o método testado</h4>
-                            <p>→ Criado por ProPlayer Top 3 Mundial.<br>
-                            → Usado por 3.300+ jogadores com resultados comprovados.<br>
-                            → Evolução visível em 2-4 semanas.<br>
-                            → Suporte direto quando travar.<br>
-                            → Garantia de 7 dias (risco zero).</p>
-                        </div>
-                    </div>
-
-                    <div style="background: rgba(255, 255, 255, 0.04); border: 2px solid rgba(255, 215, 0, 0.3); border-radius: 16px; padding: 25px 20px;">
-                        <h3 style="color: #ffd700; text-align: center; margin-bottom: 22px; font-size: clamp(1.2em, 5vw, 1.7em); line-height: 1.3;">🎓 Programa de Treinamento Completo</h3>
-                        
-                        <div style="margin: 22px 0;">
-                            <p style="color: #ddd; line-height: 1.8; margin-bottom: 12px; font-size: clamp(0.85em, 3.3vw, 1.05em);">
-                                Mais de 3.300 jogadores usaram este método para subir de divisão. O que está incluso:
-                            </p>
-                            <ul style="color: #ddd; line-height: 2; list-style: none; padding-left: 0; font-size: clamp(0.8em, 3vw, 0.98em);">
-                                <li>✅ 7 módulos completos (fundamentos ao avançado)</li>
-                                <li>✅ Táticas META atualizadas semanalmente</li>
-                                <li>✅ Grupo VIP no Discord</li>
-                                <li>✅ Análise de 1 partida sua</li>
-                                <li>✅ Suporte direto (resposta em 24h)</li>
-                                <li>✅ Acesso vitalício + atualizações</li>
-                            </ul>
-                        </div>
-
-                        <div style="text-align: center; margin: 25px 0;">
-                            <div class="countdown-timer" style="margin-bottom: 20px;">
-                                <p>⚠️ OFERTA BLACK FRIDAY TERMINA EM:</p>
-                                <div class="timer-display">
-                                    <div class="timer-block">
-                                        <span class="timer-number" id="hours">23</span>
-                                        <span class="timer-label">Horas</span>
-                                    </div>
-                                    <div class="timer-block">
-                                        <span class="timer-number" id="minutes">59</span>
-                                        <span class="timer-label">Min</span>
-                                    </div>
-                                    <div class="timer-block">
-                                        <span class="timer-number" id="seconds">59</span>
-                                        <span class="timer-label">Seg</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div style="background: linear-gradient(135deg, #ff6464, #ff8a80); padding: 10px 22px; border-radius: 10px; display: inline-block; margin-bottom: 12px;">
-                                <p style="color: #fff; font-weight: bold; font-size: clamp(0.9em, 3.3vw, 1.15em); margin: 0;">🔥 BLACK FRIDAY - PREÇO PROMOCIONAL</p>
-                            </div>
-                            <div>
-                                <span class="price-anchor">De R$ 297,00</span>
-                            </div>
-                            <div style="font-size: clamp(1.6em, 8vw, 2.8em); color: #4caf50; font-weight: bold; margin-bottom: 5px;">
-                                12x R$ 12,10
-                            </div>
-                            <p style="font-size: clamp(0.85em, 3.3vw, 1.05em); color: #ddd; margin-top: 8px;">ou R$ 117,00 à vista</p>
-                            <p style="color: #ff6464; font-weight: bold; font-size: clamp(0.8em, 3vw, 0.95em); margin-top: 10px; animation: blink 1.5s infinite;">⚠️ Oferta termina em breve - Últimas vagas!</p>
-                        </div>
-
-                        <div class="guarantee-box">
-                            <h3>🛡️ Se você não melhorar em 7 dias<br>reembolsamos seu dinheiro</h3>
-                            <p>Teste o método por 7 dias completos. Se não ver melhora no seu jogo, devolvemos <strong>100% do valor investido</strong>.</p>
-                            <p style="color: #ddd; font-size: clamp(0.85em, 3.2vw, 1.05em); margin-top: 12px;">Sem perguntas. Sem burocracias. Simples assim.</p>
-                        </div>
-
-                        <button class="cta-button" onclick="goToCheckout()">
-                            🔥 Garantir Minha Vaga na Black Friday
-                        </button>
-
-                        <p style="text-align: center; margin-top: 12px; color: #aaa; font-size: clamp(0.7em, 2.5vw, 0.9em);">
-                            Acesso liberado imediatamente após pagamento
+                        <p style="color: #ddd; font-size: clamp(0.85em, 3.2vw, 1.05em); line-height: 1.7; margin-bottom: 10px;">
+                            <strong style="color: #4caf50;">O QUE FAZER:</strong> Nas próximas 5 partidas, use APENAS jockey (L2/LT) na defesa. Zero tackles manuais. Só posicionamento.
+                        </p>
+                        <p style="color: #aaa; font-size: clamp(0.8em, 3vw, 0.95em); line-height: 1.6; font-style: italic;">
+                            💡 Parece contra-intuitivo, mas você vai tomar MENOS gols. Depois adicione tackles aos poucos.
                         </p>
                     </div>
 
-                    <div class="final-choice">
-                        <h3>⏰ ÚLTIMA DECISÃO:</h3>
-                        <p>Você está a <strong>1 clique</strong> de distância de ter o mesmo método que 3.300+ jogadores usaram para subir de divisão.</p>
-                        <p>Ou você pode fechar essa página e continuar tentando sozinho.</p>
-                        <p><strong>Mas lembre-se:</strong> Daqui 3 meses, você vai estar onde?</p>
-                        <p style="color: #4caf50; font-weight: bold; font-size: clamp(1.05em, 4.2vw, 1.35em); margin-top: 20px;">Jogadores que agiram HOJE já estão vendo resultados.</p>
-                        <p style="color: #ff6464; font-weight: bold; margin-top: 15px;">Os que ficaram "pensando" continuam travados.</p>
-                        
-                        <button class="cta-button" onclick="goToCheckout()" style="margin-top: 25px;">
-                            🔥 Garantir Minha Vaga na Black Friday
-                        </button>
+                    <div style="background: rgba(0, 0, 0, 0.3); padding: 18px; margin: 15px 0; border-left: 4px solid #4caf50; border-radius: 10px;">
+                        <div style="color: #ffd700; font-weight: bold; margin-bottom: 10px; font-size: clamp(0.95em, 3.5vw, 1.15em);">
+                            3️⃣ Padrão de Ataque Simples (Criação)
+                        </div>
+                        <p style="color: #ddd; font-size: clamp(0.85em, 3.2vw, 1.05em); line-height: 1.7; margin-bottom: 10px;">
+                            <strong style="color: #4caf50;">O QUE FAZER:</strong> Bola no ponta → L1+Triângulo (corrida do atacante) → Driven pass (R1+X) para área.
+                        </p>
+                        <p style="color: #aaa; font-size: clamp(0.8em, 3vw, 0.95em); line-height: 1.6; font-style: italic;">
+                            💡 Treine 10x no arena, depois use 3-5x por partida. Esse padrão sozinho vai criar PELO MENOS 2 chances claras por jogo.
+                        </p>
                     </div>
+
+                    <div style="background: rgba(255, 215, 0, 0.1); border: 2px solid rgba(255, 215, 0, 0.4); border-radius: 12px; padding: 20px; margin-top: 25px; text-align: center;">
+                        <p style="color: #ffd700; font-weight: bold; font-size: clamp(0.95em, 3.8vw, 1.2em); margin-bottom: 12px;">
+                            ⚡ TESTE ESSAS 3 DICAS AGORA
+                        </p>
+                        <p style="color: #ddd; font-size: clamp(0.85em, 3.2vw, 1.05em); line-height: 1.7;">
+                            Jogue <strong style="color: #4caf50;">2-3 partidas</strong> aplicando só isso. Você vai ver diferença.<br><br>
+                            Mas a verdade? Essas são <strong style="color: #ffd700;">só as 3 mais básicas</strong> de um método com <strong style="color: #ff6464;">47+ táticas avançadas</strong> que 3.300+ jogadores estão usando.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- CTA PRINCIPAL - LOGO APÓS RESULTADO -->
+                <div class="cta-primary">
+                    <h3>💡 Pare de Desperdiçar Tempo</h3>
+                    
+                    <p>Você acabou de ver o diagnóstico.<br>
+                    Agora a pergunta é: <strong>vai continuar tentando sozinho?</strong></p>
+                    
+                    <div class="countdown-timer" style="margin-bottom: 20px;">
+                        <p>⚠️ PREÇO BLACK FRIDAY SOBE EM:</p>
+                        <div class="timer-display">
+                            <div class="timer-block">
+                                <span class="timer-number" id="hours">23</span>
+                                <span class="timer-label">Horas</span>
+                            </div>
+                            <div class="timer-block">
+                                <span class="timer-number" id="minutes">59</span>
+                                <span class="timer-label">Min</span>
+                            </div>
+                            <div class="timer-block">
+                                <span class="timer-number" id="seconds">59</span>
+                                <span class="timer-label">Seg</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="cta-button" onclick="goToCheckout()">
+                        🚀 Quero Subir de Divisão em 2 Semanas
+                    </button>
+                    
+                    <p class="price-note">
+                        Black Friday: <strong>12x R$12,10</strong> • Garantia 7 dias
+                    </p>
+                </div>
+
+                <!-- Prova Social Rápida -->
+                <div style="background: rgba(0, 0, 0, 0.3); border-radius: 16px; padding: 25px 20px; margin: 30px 0; text-align: center;">
+                    <h3 style="color: #ffd700; margin-bottom: 20px; font-size: clamp(1.1em, 4.8vw, 1.6em);">📱 Resultado Real de Aluno</h3>
+                    
+                    <img src="https://i.ibb.co/Xw8Vx3W/Captura-de-Tela-2025-11-01-a-s-17-26-18.png" alt="Nathan" style="width: 100%; max-width: 450px; border-radius: 12px; margin-bottom: 15px; box-shadow: 0 10px 35px rgba(0, 0, 0, 0.6); border: 2px solid rgba(76, 175, 80, 0.3);">
+                    
+                    <p style="color: #fff; font-size: clamp(0.9em, 3.3vw, 1.15em); line-height: 1.7;">
+                        <strong style="color: #4caf50;">Nathan</strong> estava TRAVADO exatamente como você.<br>
+                        Aplicou o método e em 3 semanas fez <strong style="color: #ffd700;">15 wins "fácil"</strong> (palavras dele).
+                    </p>
+                    
+                    <p style="color: #ddd; font-size: clamp(0.85em, 3.2vw, 1.05em); margin-top: 15px;">
+                        A diferença entre você e ele? <strong style="color: #ffd700;">Ele decidiu parar de tentar sozinho.</strong>
+                    </p>
+                </div>
+
+                <!-- CTA Secundário -->
+                <div style="background: rgba(255, 215, 0, 0.08); border: 2px solid #ffd700; border-radius: 16px; padding: 25px 20px; margin: 30px 0; text-align: center;">
+                    <h3 style="color: #ff6464; font-size: clamp(1.2em, 5vw, 1.7em); margin-bottom: 15px; line-height: 1.3;">⚠️ REALIDADE DURA:</h3>
+                    
+                    <p style="color: #fff; font-size: clamp(0.9em, 3.5vw, 1.15em); line-height: 1.7; margin: 15px 0;">
+                        Baseado nas suas respostas, você está cometendo os <strong style="color: #ffd700;">mesmos erros que 83% dos jogadores</strong> da sua divisão fazem.
+                    </p>
+                    
+                    <p style="color: #ddd; font-size: clamp(0.85em, 3.2vw, 1.05em); line-height: 1.6; margin: 15px 0;">
+                        Sem método correto, daqui <strong style="color: #ff6464;">3 meses você estará no MESMO lugar</strong>.<br>
+                        Ou você segue o passo-a-passo testado por <strong style="color: #4caf50;">3.300+ jogadores</strong>.
+                    </p>
+                    
+                    <button class="cta-button" onclick="goToCheckout()" style="margin-top: 20px;">
+                        🔥 Acessar Método Completo Agora
+                    </button>
+                </div>
+
+                <!-- Garantia -->
+                <div style="background: linear-gradient(135deg, rgba(76, 175, 80, 0.2), rgba(46, 125, 50, 0.1)); border: 3px solid #4caf50; border-radius: 16px; padding: 25px 20px; margin: 30px 0; text-align: center; box-shadow: 0 8px 30px rgba(76, 175, 80, 0.3);">
+                    <div style="font-size: 3em; margin-bottom: 15px;">🛡️</div>
+                    <h3 style="color: #4caf50; font-size: clamp(1.3em, 5.5vw, 2em); margin-bottom: 15px; line-height: 1.3;">
+                        Garantia de 7 Dias
+                    </h3>
+                    <p style="color: #fff; font-size: clamp(0.95em, 3.8vw, 1.25em); line-height: 1.7; margin: 10px 0;">
+                        Teste o método por 7 dias completos. Se não ver melhora no seu jogo, devolvemos <strong style="color: #ffd700;">100% do valor</strong>.
+                    </p>
+                    <p style="color: #ddd; font-size: clamp(0.85em, 3.2vw, 1.05em); margin-top: 12px;">
+                        Sem perguntas. Sem burocracias. Você literalmente não tem nada a perder.
+                    </p>
+                </div>
+
+                <!-- CTA Terciário -->
+                <div style="text-align: center; margin: 30px 0;">
+                    <div style="background: linear-gradient(135deg, #ff6464, #ff8a80); padding: 10px 22px; border-radius: 10px; display: inline-block; margin-bottom: 12px;">
+                        <p style="color: #fff; font-weight: bold; font-size: clamp(0.9em, 3.3vw, 1.15em); margin: 0;">🔥 BLACK FRIDAY - PREÇO PROMOCIONAL</p>
+                    </div>
+                    <div>
+                        <span class="price-anchor">De R$ 297,00</span>
+                    </div>
+                    <div style="font-size: clamp(1.6em, 8vw, 2.8em); color: #4caf50; font-weight: bold; margin-bottom: 5px;">
+                        12x R$ 12,10
+                    </div>
+                    <p style="font-size: clamp(0.85em, 3.3vw, 1.05em); color: #ddd; margin-top: 8px;">ou R$ 117,00 à vista</p>
+                    
+                    <button class="cta-button" onclick="goToCheckout()" style="margin-top: 25px;">
+                        🔥 Garantir Minha Vaga Agora
+                    </button>
+                    
+                    <p style="text-align: center; margin-top: 12px; color: #aaa; font-size: clamp(0.7em, 2.5vw, 0.9em);">
+                        Acesso liberado imediatamente após pagamento
+                    </p>
+                </div>
+
+                <!-- FAQ Colapsável -->
+                <div style="background: rgba(255, 215, 0, 0.05); border: 2px solid rgba(255, 215, 0, 0.3); border-radius: 16px; padding: 25px 20px; margin: 30px 0;">
+                    <h3 style="color: #ffd700; text-align: center; margin-bottom: 22px; font-size: clamp(1.1em, 4.8vw, 1.6em);">❓ Perguntas Frequentes</h3>
+                    
+                    <details style="background: rgba(0, 0, 0, 0.3); border-radius: 12px; padding: 15px; margin: 12px 0; cursor: pointer;">
+                        <summary style="color: #ffd700; font-weight: bold; font-size: clamp(0.9em, 3.5vw, 1.15em); cursor: pointer;">🕐 "Não tenho tempo pra curso"</summary>
+                        <p style="color: #ddd; margin-top: 10px; font-size: clamp(0.8em, 3vw, 0.98em); line-height: 1.6;">
+                            Os módulos são de 5-15min. Você assiste no tempo de 2-3 partidas. E aplica IMEDIATAMENTE. Jogadores veem resultado em 1 semana.
+                        </p>
+                    </details>
+
+                    <details style="background: rgba(0, 0, 0, 0.3); border-radius: 12px; padding: 15px; margin: 12px 0; cursor: pointer;">
+                        <summary style="color: #ffd700; font-weight: bold; font-size: clamp(0.9em, 3.5vw, 1.15em); cursor: pointer;">😤 "Já tentei curso antes"</summary>
+                        <p style="color: #ddd; margin-top: 10px; font-size: clamp(0.8em, 3vw, 0.98em); line-height: 1.6;">
+                            Aqui não é teoria do YouTube. Cada módulo tem EXERCÍCIO PRÁTICO no arena + análise de 1 partida sua. Você TREINA com feedback.
+                        </p>
+                    </details>
+
+                    <details style="background: rgba(0, 0, 0, 0.3); border-radius: 12px; padding: 15px; margin: 12px 0; cursor: pointer;">
+                        <summary style="color: #ffd700; font-weight: bold; font-size: clamp(0.9em, 3.5vw, 1.15em); cursor: pointer;">💰 "Tá caro"</summary>
+                        <p style="color: #ddd; margin-top: 10px; font-size: clamp(0.8em, 3vw, 0.98em); line-height: 1.6;">
+                            R$ 12,10 por mês = menos que 1 lanche. Quanto custa continuar travado por mais 6 meses? Esse é o preço de Black Friday - depois volta ao normal.
+                        </p>
+                    </details>
+                </div>
+
+                <!-- Autoridade ProPlayer -->
+                <div style="background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(255, 215, 0, 0.05)); border: 3px solid #ffd700; border-radius: 16px; padding: 25px 20px; margin: 30px 0; text-align: center; box-shadow: 0 8px 30px rgba(255, 215, 0, 0.2);">
+                    <h3 style="color: #ffd700; font-size: clamp(1.2em, 5vw, 1.8em); margin-bottom: 18px;">
+                        🏆 Criado por ProPlayer Top 3 Mundial
+                    </h3>
+                    <p style="color: #fff; font-size: clamp(0.9em, 3.5vw, 1.15em); line-height: 1.7; margin: 12px 0;">
+                        Não é teoria de qualquer pessoa. Foi desenvolvido por um <strong style="color: #4caf50;">ProPlayer Top 3 Mundial</strong>, com anos de experiência competitiva.
+                    </p>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin: 20px 0;">
+                        <div style="background: rgba(0, 0, 0, 0.4); padding: 18px 12px; border-radius: 12px; border: 2px solid rgba(76, 175, 80, 0.3);">
+                            <div style="font-size: clamp(1.8em, 8vw, 2.5em); color: #4caf50; font-weight: bold; margin-bottom: 8px;">TOP 3</div>
+                            <div style="color: #ddd; font-size: clamp(0.75em, 2.8vw, 0.9em);">Ranking Mundial</div>
+                        </div>
+                        <div style="background: rgba(0, 0, 0, 0.4); padding: 18px 12px; border-radius: 12px; border: 2px solid rgba(76, 175, 80, 0.3);">
+                            <div style="font-size: clamp(1.8em, 8vw, 2.5em); color: #4caf50; font-weight: bold; margin-bottom: 8px;">3.300+</div>
+                            <div style="color: #ddd; font-size: clamp(0.75em, 2.8vw, 0.9em);">Alunos Formados</div>
+                        </div>
+                    </div>
+                    
+                    <p style="color: #4caf50; font-weight: bold; font-size: clamp(0.95em, 3.5vw, 1.15em); margin-top: 18px;">
+                        O mesmo método usado nos campeonatos profissionais.
+                    </p>
+                </div>
+
+                <!-- CTA Final -->
+                <div style="background: rgba(0, 0, 0, 0.4); border: 3px solid #ffd700; border-radius: 16px; padding: 30px 20px; margin: 30px 0; text-align: center;">
+                    <h3 style="color: #ff6464; font-size: clamp(1.3em, 5.5vw, 2em); margin-bottom: 25px; line-height: 1.3;">
+                        ⏰ ÚLTIMA DECISÃO
+                    </h3>
+                    <p style="color: #ddd; font-size: clamp(0.95em, 3.8vw, 1.2em); line-height: 1.8; margin: 15px 0;">
+                        Você está a <strong style="color: #ffd700;">1 clique</strong> de ter o mesmo método que 3.300+ jogadores usaram para subir de divisão.
+                    </p>
+                    <p style="color: #ddd; font-size: clamp(0.95em, 3.8vw, 1.2em); line-height: 1.8; margin: 15px 0;">
+                        Ou você pode fechar essa página e continuar tentando sozinho.
+                    </p>
+                    <p style="color: #4caf50; font-weight: bold; font-size: clamp(1.05em, 4.2vw, 1.35em); margin-top: 20px;">
+                        Jogadores que agiram HOJE já estão vendo resultados.
+                    </p>
+                    <p style="color: #ff6464; font-weight: bold; margin-top: 15px; font-size: clamp(0.95em, 3.5vw, 1.2em);">
+                        Os que ficaram "pensando" continuam travados.
+                    </p>
+                    
+                    <button class="cta-button" onclick="goToCheckout()" style="margin-top: 25px;">
+                        🔥 Garantir Minha Vaga na Black Friday
+                    </button>
                 </div>
             </div>
         </div>
@@ -1454,39 +1139,6 @@
             mentalidade: 'Mentalidade'
         };
 
-        const tipsBySkill = {
-            fundamentos: {
-                title: "Fortalecer Fundamentos",
-                tip: "Jogue 5 partidas em Squad Battles (Profissional) focando APENAS em: passar para o pé longe do adversário + nunca correr com a bola mais de 3 segundos. Isso constrói base sólida.",
-                why: "Fundamentos fracos = você perde bola em situações básicas. Impossível evoluir sem dominar o básico."
-            },
-            táticas: {
-                title: "Dominar Táticas",
-                tip: "Configure 3 táticas: Balanceada (profundidade 50), Defensiva (profundidade 35) e Ofensiva (profundidade 65). Troque conforme placar. Isso já melhora 20-30%.",
-                why: "Jogar sem táticas é como dirigir sem GPS. Você pode chegar, mas vai demorar muito mais."
-            },
-            defesa: {
-                title: "Melhorar Defesa",
-                tip: "Próximas 3 partidas: use APENAS jockey (L2/LT). Zero tackles manuais. Só sinta o posicionamento. Depois adicione tackles aos poucos.",
-                why: "Defesa ruim = você toma 2-3 gols a mais por jogo. É a diferença entre Rank 3 e Rank 1."
-            },
-            ataque: {
-                title: "Aprimorar Ataque",
-                tip: "Aprenda 1 padrão: Passe em L + corrida do atacante (L1+triângulo) + driven pass para área. Repita 10x no arena, depois use em partidas.",
-                why: "Ataque ineficiente = você cria menos chances. Partidas equilibradas viram derrotas."
-            },
-            mecânicas: {
-                title: "Desenvolver Mecânicas",
-                tip: "Domine APENAS o ball roll esta semana (flick direito para os lados). Use 5-10x por partida. Depois adicione outros moves.",
-                why: "Mecânicas limitadas = você fica previsível. Adversários lêem seu jogo fácil."
-            },
-            mentalidade: {
-                title: "Fortalecer Mentalidade",
-                tip: "Depois de cada partida (win ou loss), anote 1 erro específico que repetiu. Só 1. Na próxima, foque em não repetir.",
-                why: "Sem análise você repete os mesmos erros por meses. Evolução fica 5x mais lenta."
-            }
-        };
-
         function startQuiz() {
             document.getElementById('startScreen').classList.add('hidden');
             document.getElementById('quizContent').style.display = 'block';
@@ -1532,7 +1184,6 @@
             const option = questions[currentQuestion].options[optionIndex];
             totalScore += option.points;
             
-            // Feedback visual sutil
             const feedback = document.getElementById('questionFeedback');
             feedback.style.display = 'block';
             setTimeout(() => {
@@ -1567,7 +1218,7 @@
                 'Processando suas respostas...',
                 'Comparando com 3.300+ jogadores...',
                 'Calculando suas áreas prioritárias...',
-                'Preparando seu plano personalizado...'
+                'Preparando seu diagnóstico...'
             ];
             
             let messageIndex = 0;
@@ -1612,7 +1263,6 @@
             document.getElementById('hoursText').textContent = totalHours + ' HORAS';
             
             createSkillBars();
-            generatePriorityTips();
             
             document.getElementById('resultContainer').classList.add('active');
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -1640,28 +1290,6 @@
                     </div>
                 `;
             }
-            
-            container.innerHTML = html;
-        }
-
-        function generatePriorityTips() {
-            const weakestSkills = Object.entries(skillScores)
-                .sort((a, b) => a[1] - b[1])
-                .slice(0, 3);
-            
-            const container = document.getElementById('tipsContent');
-            let html = '';
-            
-            weakestSkills.forEach(([skill, score], index) => {
-                const tip = tipsBySkill[skill];
-                html += `
-                    <div class="tip-item">
-                        <div class="tip-title">${index + 1}. ${tip.title}</div>
-                        <p style="color: #ddd; margin: 8px 0; font-size: clamp(0.8em, 3vw, 0.95em);">${tip.why}</p>
-                        <p style="color: #4caf50; margin-top: 10px; font-weight: 500; font-size: clamp(0.8em, 3vw, 0.95em);"><strong>Ação:</strong> ${tip.tip}</p>
-                    </div>
-                `;
-            });
             
             container.innerHTML = html;
         }
