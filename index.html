@@ -2,23 +2,25 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Quiz FIFA - Análise de Habilidade</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             background: linear-gradient(135deg, #0a0e27 0%, #1a1a2e 50%, #16213e 100%);
             color: #fff;
             min-height: 100vh;
-            padding: 15px;
+            padding: 12px;
             position: relative;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
 
         body::before {
@@ -41,8 +43,8 @@
             margin: 0 auto;
             background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(20px);
-            border-radius: 24px;
-            padding: clamp(20px, 5vw, 50px);
+            border-radius: 20px;
+            padding: 20px;
             box-shadow: 
                 0 8px 32px rgba(0, 0, 0, 0.4),
                 inset 0 1px 0 rgba(255, 255, 255, 0.1);
@@ -51,43 +53,103 @@
             z-index: 1;
         }
 
+        .authority-badge {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(255, 215, 0, 0.05));
+            border: 2px solid #ffd700;
+            border-radius: 12px;
+            padding: 10px 16px;
+            margin-bottom: 15px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.2);
+        }
+
+        .authority-badge p {
+            color: #ffd700;
+            font-size: clamp(0.75em, 2.8vw, 0.95em);
+            font-weight: bold;
+            margin: 0;
+        }
+
         .header {
             text-align: center;
-            margin-bottom: clamp(25px, 5vw, 40px);
+            margin-bottom: 25px;
         }
 
         .header h1 {
             color: #ffd700;
-            font-size: clamp(1.5em, 5vw, 2.4em);
-            margin-bottom: 12px;
+            font-size: clamp(1.4em, 6vw, 2.4em);
+            margin-bottom: 10px;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
             text-shadow: 
                 2px 2px 4px rgba(0, 0, 0, 0.5),
                 0 0 20px rgba(255, 215, 0, 0.3);
-            line-height: 1.2;
+            line-height: 1.3;
         }
 
         .header p {
             color: #ccc;
-            font-size: clamp(0.95em, 3vw, 1.1em);
+            font-size: clamp(0.9em, 3.5vw, 1.1em);
             line-height: 1.5;
+        }
+
+        .countdown-timer {
+            background: linear-gradient(135deg, rgba(255, 100, 100, 0.2), rgba(255, 50, 50, 0.1));
+            border: 3px solid #ff6464;
+            border-radius: 12px;
+            padding: 15px;
+            margin: 20px 0;
+            text-align: center;
+            box-shadow: 0 6px 25px rgba(255, 100, 100, 0.3);
+            animation: pulse 2s infinite;
+        }
+
+        .countdown-timer p {
+            color: #ff6464;
+            font-weight: bold;
+            font-size: clamp(0.85em, 3.2vw, 1.05em);
+            margin-bottom: 10px;
+        }
+
+        .timer-display {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .timer-block {
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 8px;
+            padding: 8px 12px;
+            min-width: 60px;
+        }
+
+        .timer-number {
+            font-size: clamp(1.5em, 6vw, 2em);
+            color: #ffd700;
+            font-weight: bold;
+            display: block;
+        }
+
+        .timer-label {
+            font-size: clamp(0.7em, 2.5vw, 0.85em);
+            color: #ddd;
         }
 
         .trust-badges {
             display: flex;
             justify-content: center;
-            gap: clamp(8px, 2vw, 15px);
-            margin: 25px 0;
+            gap: 8px;
+            margin: 20px 0;
             flex-wrap: wrap;
         }
 
         .badge {
             background: rgba(76, 175, 80, 0.15);
             border: 2px solid #4caf50;
-            border-radius: 10px;
-            padding: clamp(6px 12px, 2vw, 10px 18px);
-            font-size: clamp(0.75em, 2.5vw, 0.9em);
+            border-radius: 8px;
+            padding: 8px 14px;
+            font-size: clamp(0.7em, 2.8vw, 0.9em);
             color: #4caf50;
             font-weight: bold;
             white-space: nowrap;
@@ -95,17 +157,16 @@
             transition: all 0.3s ease;
         }
 
-        .badge:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(76, 175, 80, 0.3);
+        .badge:active {
+            transform: scale(0.95);
         }
 
         .progress-bar {
             width: 100%;
-            height: 10px;
+            height: 8px;
             background: rgba(255, 255, 255, 0.08);
             border-radius: 20px;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             overflow: hidden;
             box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
         }
@@ -137,7 +198,7 @@
         @keyframes slideIn {
             from { 
                 opacity: 0; 
-                transform: translateY(30px);
+                transform: translateY(20px);
             }
             to { 
                 opacity: 1; 
@@ -145,17 +206,37 @@
             }
         }
 
+        .question-feedback {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(76, 175, 80, 0.95);
+            padding: 20px 40px;
+            border-radius: 12px;
+            font-size: clamp(1.2em, 5vw, 1.8em);
+            font-weight: bold;
+            z-index: 1000;
+            display: none;
+            animation: fadeInOut 0.6s ease;
+        }
+
+        @keyframes fadeInOut {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
+        }
+
         .question-number {
             color: #ffd700;
-            font-size: clamp(0.8em, 2.5vw, 0.95em);
+            font-size: clamp(0.75em, 2.8vw, 0.95em);
             font-weight: bold;
             margin-bottom: 12px;
             letter-spacing: 1px;
         }
 
         .question {
-            font-size: clamp(1.15em, 4vw, 1.5em);
-            margin-bottom: 25px;
+            font-size: clamp(1.1em, 4.5vw, 1.5em);
+            margin-bottom: 20px;
             line-height: 1.4;
             font-weight: 600;
         }
@@ -163,9 +244,9 @@
         .question-tip {
             background: rgba(255, 215, 0, 0.08);
             border-left: 4px solid #ffd700;
-            padding: 15px;
-            margin-bottom: 25px;
-            font-size: clamp(0.85em, 2.8vw, 0.95em);
+            padding: 12px;
+            margin-bottom: 20px;
+            font-size: clamp(0.8em, 3vw, 0.95em);
             color: #ddd;
             border-radius: 8px;
             line-height: 1.6;
@@ -175,55 +256,44 @@
         .options {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 10px;
         }
 
         .option {
             background: rgba(255, 255, 255, 0.05);
             border: 2px solid rgba(255, 215, 0, 0.25);
-            border-radius: 14px;
-            padding: clamp(14px, 3vw, 20px);
+            border-radius: 12px;
+            padding: 16px 45px 16px 16px;
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            font-size: clamp(0.9em, 3vw, 1.05em);
+            transition: all 0.2s ease;
+            font-size: clamp(0.85em, 3.5vw, 1.05em);
             position: relative;
             line-height: 1.5;
-            min-height: 60px;
+            min-height: 55px;
             display: flex;
             align-items: center;
-            padding-right: 50px;
+            touch-action: manipulation;
         }
 
         .option:active {
             transform: scale(0.98);
-        }
-
-        .option:hover {
-            background: rgba(255, 215, 0, 0.12);
-            border-color: #ffd700;
-            transform: translateX(5px);
-            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.2);
+            background: rgba(255, 215, 0, 0.15);
         }
 
         .option-icon {
             position: absolute;
-            right: 20px;
+            right: 15px;
             top: 50%;
             transform: translateY(-50%);
-            font-size: 1.5em;
-            opacity: 0;
-            transition: all 0.3s ease;
-        }
-
-        .option:hover .option-icon {
-            opacity: 1;
-            right: 15px;
+            font-size: 1.3em;
+            color: #ffd700;
+            opacity: 0.6;
         }
 
         .analyzing-screen {
             display: none;
             text-align: center;
-            padding: clamp(30px, 8vw, 60px) 20px;
+            padding: 40px 20px;
         }
 
         .analyzing-screen.active {
@@ -237,9 +307,9 @@
         }
 
         .loading-animation {
-            font-size: clamp(3em, 10vw, 4.5em);
+            font-size: clamp(3em, 12vw, 4.5em);
             animation: spin 2s linear infinite;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
 
         @keyframes spin {
@@ -248,12 +318,19 @@
         }
 
         .analyzing-screen h3 {
-            font-size: clamp(1.3em, 4vw, 1.8em);
-            margin-bottom: 15px;
+            font-size: clamp(1.2em, 4.5vw, 1.8em);
+            margin-bottom: 12px;
         }
 
         .analyzing-screen p {
-            font-size: clamp(0.9em, 3vw, 1.1em);
+            font-size: clamp(0.85em, 3.2vw, 1.1em);
+        }
+
+        .analyzing-message {
+            color: #4caf50;
+            font-weight: bold;
+            margin-top: 15px;
+            min-height: 30px;
         }
 
         .result-container {
@@ -266,33 +343,33 @@
         }
 
         .result-container h2 {
-            font-size: clamp(1.4em, 5vw, 2em);
+            font-size: clamp(1.3em, 5vw, 2em);
         }
 
         .radar-chart-container {
             background: rgba(0, 0, 0, 0.25);
-            border-radius: 18px;
-            padding: clamp(20px, 5vw, 35px);
-            margin: 30px 0;
+            border-radius: 16px;
+            padding: 20px;
+            margin: 25px 0;
             border: 1px solid rgba(255, 215, 0, 0.15);
         }
 
         .radar-chart-container h3 {
             color: #ffd700;
             text-align: center;
-            margin-bottom: 25px;
-            font-size: clamp(1.2em, 4vw, 1.5em);
+            margin-bottom: 20px;
+            font-size: clamp(1.1em, 4vw, 1.5em);
         }
 
         .skill-bar {
-            margin: 20px 0;
+            margin: 18px 0;
         }
 
         .skill-name {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 10px;
-            font-size: clamp(0.85em, 3vw, 1em);
+            margin-bottom: 8px;
+            font-size: clamp(0.8em, 3.2vw, 1em);
             gap: 10px;
         }
 
@@ -307,7 +384,7 @@
         }
 
         .skill-progress {
-            height: 14px;
+            height: 12px;
             background: rgba(255, 255, 255, 0.08);
             border-radius: 20px;
             overflow: hidden;
@@ -336,53 +413,54 @@
         .time-wasted-box {
             background: linear-gradient(135deg, rgba(255, 100, 100, 0.15), rgba(255, 50, 50, 0.08));
             border: 3px solid #ff6464;
-            border-radius: 18px;
-            padding: clamp(20px, 5vw, 35px);
-            margin: 30px 0;
+            border-radius: 16px;
+            padding: 25px 20px;
+            margin: 25px 0;
             text-align: center;
             box-shadow: 0 8px 30px rgba(255, 100, 100, 0.2);
         }
 
         .time-wasted-box h3 {
             color: #ff6464;
-            font-size: clamp(1.3em, 5vw, 1.9em);
-            margin-bottom: 25px;
+            font-size: clamp(1.2em, 5.5vw, 1.9em);
+            margin-bottom: 20px;
             text-transform: uppercase;
             text-shadow: 0 2px 10px rgba(255, 100, 100, 0.3);
+            line-height: 1.3;
         }
 
         .time-stats {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 15px;
-            margin: 25px 0;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin: 20px 0;
         }
 
         .time-stat {
             background: rgba(0, 0, 0, 0.4);
-            padding: clamp(15px, 4vw, 25px);
+            padding: 18px 12px;
             border-radius: 12px;
             border: 1px solid rgba(255, 215, 0, 0.2);
         }
 
         .time-stat-value {
-            font-size: clamp(1.8em, 6vw, 2.8em);
+            font-size: clamp(1.6em, 7vw, 2.8em);
             color: #ffd700;
             font-weight: bold;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             text-shadow: 0 2px 10px rgba(255, 215, 0, 0.3);
         }
 
         .time-stat-label {
             color: #ddd;
-            font-size: clamp(0.8em, 2.5vw, 0.95em);
+            font-size: clamp(0.75em, 2.8vw, 0.95em);
         }
 
         .time-wasted-box p {
             color: #fff;
-            font-size: clamp(0.95em, 3.2vw, 1.2em);
-            line-height: 1.8;
-            margin: 15px 0;
+            font-size: clamp(0.9em, 3.5vw, 1.2em);
+            line-height: 1.7;
+            margin: 12px 0;
         }
 
         .time-wasted-box p strong {
@@ -392,31 +470,31 @@
         .strategic-print {
             background: rgba(0, 0, 0, 0.3);
             border: 3px solid #4caf50;
-            border-radius: 18px;
-            padding: clamp(20px, 5vw, 30px);
-            margin: 30px 0;
+            border-radius: 16px;
+            padding: 25px 20px;
+            margin: 25px 0;
             text-align: center;
             box-shadow: 0 8px 30px rgba(76, 175, 80, 0.2);
         }
 
         .strategic-print h3 {
-            font-size: clamp(1.3em, 4.5vw, 1.7em);
+            font-size: clamp(1.2em, 4.8vw, 1.7em);
         }
 
         .strategic-print img {
             width: 100%;
             max-width: 450px;
             border-radius: 12px;
-            margin: 20px 0;
+            margin: 18px 0;
             box-shadow: 0 10px 35px rgba(0, 0, 0, 0.6);
             border: 2px solid rgba(76, 175, 80, 0.3);
         }
 
         .strategic-print-caption {
             color: #fff;
-            font-size: clamp(0.95em, 3vw, 1.2em);
+            font-size: clamp(0.9em, 3.3vw, 1.2em);
             line-height: 1.7;
-            margin-top: 20px;
+            margin-top: 18px;
         }
 
         .strategic-print-caption strong {
@@ -426,24 +504,25 @@
         .urgency-layer {
             background: linear-gradient(135deg, rgba(255, 215, 0, 0.12), rgba(255, 215, 0, 0.04));
             border: 2px solid #ffd700;
-            border-radius: 18px;
-            padding: clamp(20px, 5vw, 35px);
-            margin: 30px 0;
+            border-radius: 16px;
+            padding: 25px 20px;
+            margin: 25px 0;
             box-shadow: 0 8px 30px rgba(255, 215, 0, 0.15);
         }
 
         .urgency-layer h3 {
             color: #ff6464;
-            font-size: clamp(1.2em, 4.5vw, 1.7em);
-            margin-bottom: 20px;
+            font-size: clamp(1.1em, 4.8vw, 1.7em);
+            margin-bottom: 18px;
             text-align: center;
+            line-height: 1.3;
         }
 
         .urgency-layer p {
             color: #fff;
-            font-size: clamp(0.95em, 3.2vw, 1.15em);
-            line-height: 1.8;
-            margin: 15px 0;
+            font-size: clamp(0.9em, 3.5vw, 1.15em);
+            line-height: 1.7;
+            margin: 12px 0;
         }
 
         .urgency-layer strong {
@@ -452,16 +531,16 @@
 
         .comparison-box {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 15px;
-            margin: 30px 0;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin: 25px 0;
         }
 
         .comparison-item {
             background: rgba(255, 255, 255, 0.05);
             border: 2px solid rgba(255, 215, 0, 0.3);
-            border-radius: 14px;
-            padding: clamp(15px, 4vw, 25px);
+            border-radius: 12px;
+            padding: 20px 12px;
             text-align: center;
             transition: all 0.3s ease;
         }
@@ -473,13 +552,13 @@
         }
 
         .comparison-label {
-            font-size: clamp(0.8em, 2.5vw, 0.95em);
+            font-size: clamp(0.75em, 2.8vw, 0.95em);
             color: #aaa;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
         .comparison-value {
-            font-size: clamp(1.6em, 6vw, 2.2em);
+            font-size: clamp(1.5em, 7vw, 2.2em);
             font-weight: bold;
             color: #ffd700;
             text-shadow: 0 2px 10px rgba(255, 215, 0, 0.3);
@@ -488,117 +567,94 @@
         .priority-tips {
             background: linear-gradient(135deg, rgba(76, 175, 80, 0.15), rgba(46, 125, 50, 0.08));
             border: 2px solid #4caf50;
-            border-radius: 18px;
-            padding: clamp(20px, 5vw, 30px);
-            margin: 30px 0;
+            border-radius: 16px;
+            padding: 25px 20px;
+            margin: 25px 0;
         }
 
         .priority-tips h3 {
             color: #4caf50;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             text-align: center;
-            font-size: clamp(1.2em, 4.5vw, 1.6em);
+            font-size: clamp(1.1em, 4.8vw, 1.6em);
         }
 
         .tip-item {
             background: rgba(0, 0, 0, 0.3);
-            padding: clamp(12px, 3vw, 18px);
-            margin: 15px 0;
+            padding: 15px;
+            margin: 12px 0;
             border-left: 4px solid #4caf50;
             border-radius: 10px;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
         }
 
-        .tip-item:hover {
-            transform: translateX(5px);
-            box-shadow: 0 4px 20px rgba(76, 175, 80, 0.2);
+        .tip-item:active {
+            transform: scale(0.98);
         }
 
         .tip-title {
             color: #ffd700;
             font-weight: bold;
-            margin-bottom: 10px;
-            font-size: clamp(0.95em, 3vw, 1.1em);
+            margin-bottom: 8px;
+            font-size: clamp(0.9em, 3.3vw, 1.1em);
         }
 
         .tip-item p {
-            font-size: clamp(0.85em, 2.8vw, 0.95em);
+            font-size: clamp(0.8em, 3vw, 0.95em);
             line-height: 1.7;
         }
 
         .soft-pitch {
             background: rgba(255, 255, 255, 0.04);
             border: 2px solid rgba(255, 215, 0, 0.3);
-            border-radius: 18px;
-            padding: clamp(20px, 5vw, 30px);
-            margin: 40px 0;
+            border-radius: 16px;
+            padding: 25px 20px;
+            margin: 30px 0;
             text-align: center;
         }
 
         .soft-pitch h4 {
             color: #ffd700;
-            margin-bottom: 20px;
-            font-size: clamp(1.2em, 4.5vw, 1.6em);
+            margin-bottom: 18px;
+            font-size: clamp(1.1em, 4.8vw, 1.6em);
+            line-height: 1.3;
         }
 
         .soft-pitch p {
             color: #ddd;
             line-height: 1.7;
-            margin-bottom: 20px;
-            font-size: clamp(0.95em, 3vw, 1.15em);
+            margin-bottom: 18px;
+            font-size: clamp(0.9em, 3.3vw, 1.15em);
         }
 
         .soft-pitch p strong {
             color: #ffd700;
         }
 
-        .learn-more-btn {
-            background: rgba(255, 215, 0, 0.15);
-            border: 2px solid #ffd700;
-            color: #ffd700;
-            padding: clamp(12px 25px, 3vw, 15px 35px);
-            font-size: clamp(1em, 3.5vw, 1.15em);
-            font-weight: bold;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.2);
-        }
-
-        .learn-more-btn:hover {
-            background: rgba(255, 215, 0, 0.25);
-            transform: translateY(-3px);
-            box-shadow: 0 6px 25px rgba(255, 215, 0, 0.3);
-        }
-
-        .learn-more-btn:active {
-            transform: translateY(-1px);
-        }
-
         .cta-button {
             background: linear-gradient(135deg, #ffd700, #ffed4e);
             color: #1a1a2e;
             border: none;
-            padding: clamp(15px 30px, 4vw, 20px 45px);
-            font-size: clamp(1.05em, 3.8vw, 1.25em);
+            padding: 18px 35px;
+            font-size: clamp(1.05em, 4.5vw, 1.4em);
             font-weight: bold;
-            border-radius: 14px;
+            border-radius: 12px;
             cursor: pointer;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            margin-top: 25px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            margin-top: 20px;
+            transition: all 0.2s ease;
             box-shadow: 0 6px 20px rgba(255, 215, 0, 0.3);
             width: 100%;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 30px rgba(255, 215, 0, 0.5);
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            touch-action: manipulation;
         }
 
         .cta-button:active {
-            transform: translateY(-2px);
+            transform: scale(0.97);
         }
 
         .start-screen {
@@ -610,8 +666,8 @@
         }
 
         .start-icon {
-            font-size: clamp(3em, 10vw, 4.5em);
-            margin-bottom: 20px;
+            font-size: clamp(2.8em, 12vw, 4.5em);
+            margin-bottom: 18px;
             animation: bounce 2s infinite;
         }
 
@@ -623,48 +679,46 @@
         .info-box {
             background: rgba(255, 215, 0, 0.08);
             border: 2px solid rgba(255, 215, 0, 0.3);
-            border-radius: 14px;
-            padding: clamp(15px, 4vw, 22px);
-            margin: 25px 0;
+            border-radius: 12px;
+            padding: 18px;
+            margin: 20px 0;
         }
 
         .info-box-title {
             color: #ffd700;
             font-weight: bold;
-            margin-bottom: 12px;
-            font-size: clamp(0.95em, 3vw, 1.1em);
+            margin-bottom: 10px;
+            font-size: clamp(0.9em, 3.3vw, 1.1em);
         }
 
         .info-box p {
-            font-size: clamp(0.85em, 2.8vw, 0.95em);
+            font-size: clamp(0.8em, 3vw, 0.95em);
             line-height: 1.8;
         }
 
         .screenshot-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin: 30px 0;
+            grid-template-columns: 1fr;
+            gap: 18px;
+            margin: 25px 0;
         }
 
         .screenshot-card {
             background: rgba(255, 255, 255, 0.04);
             border: 2px solid rgba(255, 215, 0, 0.25);
-            border-radius: 14px;
-            padding: 15px;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 12px;
+            padding: 12px;
+            transition: all 0.3s ease;
         }
 
-        .screenshot-card:hover {
-            transform: translateY(-8px);
-            border-color: #ffd700;
-            box-shadow: 0 10px 35px rgba(255, 215, 0, 0.25);
+        .screenshot-card:active {
+            transform: scale(0.98);
         }
 
         .screenshot-image {
             width: 100%;
             border-radius: 10px;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
         }
 
@@ -674,67 +728,67 @@
 
         .screenshot-caption h4 {
             color: #ffd700;
-            font-size: clamp(1em, 3.2vw, 1.15em);
-            margin-bottom: 8px;
+            font-size: clamp(0.95em, 3.5vw, 1.15em);
+            margin-bottom: 6px;
         }
 
         .screenshot-caption p {
             color: #4caf50;
-            font-size: clamp(0.9em, 2.8vw, 1.05em);
+            font-size: clamp(0.85em, 3vw, 1.05em);
             font-weight: bold;
         }
 
         .objection-killer {
             background: rgba(0, 0, 0, 0.3);
             border-radius: 12px;
-            padding: clamp(15px, 4vw, 22px);
-            margin: 20px 0;
-            transition: all 0.3s ease;
+            padding: 15px;
+            margin: 15px 0;
+            transition: all 0.2s ease;
         }
 
-        .objection-killer:hover {
-            transform: translateX(5px);
-            background: rgba(0, 0, 0, 0.4);
+        .objection-killer:active {
+            transform: scale(0.98);
         }
 
         .objection-killer h4 {
             color: #ffd700;
-            margin-bottom: 12px;
-            font-size: clamp(0.95em, 3.2vw, 1.15em);
+            margin-bottom: 10px;
+            font-size: clamp(0.9em, 3.5vw, 1.15em);
         }
 
         .objection-killer p {
             color: #ddd;
             line-height: 1.7;
-            font-size: clamp(0.85em, 2.8vw, 0.98em);
+            font-size: clamp(0.8em, 3vw, 0.98em);
         }
 
         .two-options {
             background: rgba(255, 255, 255, 0.04);
             border: 2px solid rgba(255, 215, 0, 0.3);
-            border-radius: 18px;
-            padding: clamp(20px, 5vw, 35px);
-            margin: 30px 0;
+            border-radius: 16px;
+            padding: 25px 20px;
+            margin: 25px 0;
         }
 
         .two-options h3 {
             color: #ffd700;
             text-align: center;
-            font-size: clamp(1.3em, 5vw, 1.9em);
-            margin-bottom: 30px;
+            font-size: clamp(1.2em, 5.2vw, 1.9em);
+            margin-bottom: 25px;
+            line-height: 1.3;
         }
 
         .option-box {
             background: rgba(0, 0, 0, 0.3);
             border-left: 4px solid #666;
-            padding: clamp(15px, 4vw, 22px);
-            margin: 20px 0;
+            padding: 18px;
+            margin: 18px 0;
             border-radius: 10px;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
         }
 
-        .option-box:hover {
-            transform: translateX(5px);
+        .option-box:active {
+            transform: scale(0.98);
         }
 
         .option-box.bad {
@@ -748,71 +802,228 @@
 
         .option-box h4 {
             color: #ffd700;
-            margin-bottom: 12px;
-            font-size: clamp(1em, 3.2vw, 1.15em);
+            margin-bottom: 10px;
+            font-size: clamp(0.95em, 3.5vw, 1.15em);
         }
 
         .option-box p {
             color: #ddd;
             line-height: 1.7;
-            font-size: clamp(0.85em, 2.8vw, 0.98em);
+            font-size: clamp(0.8em, 3vw, 0.98em);
         }
 
-        /* Responsividade Extra */
-        @media (max-width: 480px) {
+        .creator-badge {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(255, 215, 0, 0.05));
+            border: 3px solid #ffd700;
+            border-radius: 16px;
+            padding: 25px 20px;
+            margin: 30px 0;
+            text-align: center;
+            box-shadow: 0 8px 30px rgba(255, 215, 0, 0.2);
+        }
+
+        .creator-badge h3 {
+            color: #ffd700;
+            font-size: clamp(1.2em, 5vw, 1.8em);
+            margin-bottom: 18px;
+            line-height: 1.3;
+        }
+
+        .creator-badge p {
+            color: #fff;
+            font-size: clamp(0.9em, 3.5vw, 1.15em);
+            line-height: 1.7;
+            margin: 12px 0;
+        }
+
+        .creator-badge strong {
+            color: #4caf50;
+            font-size: 1.1em;
+        }
+
+        .stats-highlight {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .stat-box {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 18px 12px;
+            border-radius: 12px;
+            border: 2px solid rgba(76, 175, 80, 0.3);
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: clamp(1.8em, 8vw, 2.5em);
+            color: #4caf50;
+            font-weight: bold;
+            margin-bottom: 8px;
+            text-shadow: 0 2px 10px rgba(76, 175, 80, 0.4);
+        }
+
+        .stat-label {
+            color: #ddd;
+            font-size: clamp(0.75em, 2.8vw, 0.9em);
+            line-height: 1.4;
+        }
+
+        .guarantee-box {
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.2), rgba(46, 125, 50, 0.1));
+            border: 3px solid #4caf50;
+            border-radius: 16px;
+            padding: 25px 20px;
+            margin: 25px 0;
+            text-align: center;
+            box-shadow: 0 8px 30px rgba(76, 175, 80, 0.3);
+        }
+
+        .guarantee-box h3 {
+            color: #4caf50;
+            font-size: clamp(1.3em, 5.5vw, 2em);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            line-height: 1.3;
+        }
+
+        .guarantee-box p {
+            color: #fff;
+            font-size: clamp(0.95em, 3.8vw, 1.25em);
+            line-height: 1.7;
+            margin: 10px 0;
+        }
+
+        .guarantee-box p strong {
+            color: #ffd700;
+        }
+
+        .final-choice {
+            background: rgba(0, 0, 0, 0.4);
+            border: 3px solid #ffd700;
+            border-radius: 16px;
+            padding: 30px 20px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .final-choice h3 {
+            color: #ff6464;
+            font-size: clamp(1.3em, 5.5vw, 2em);
+            margin-bottom: 25px;
+            line-height: 1.3;
+        }
+
+        .final-choice p {
+            color: #ddd;
+            font-size: clamp(0.95em, 3.8vw, 1.2em);
+            line-height: 1.8;
+            margin: 15px 0;
+        }
+
+        .final-choice strong {
+            color: #ffd700;
+        }
+
+        .price-anchor {
+            text-decoration: line-through;
+            color: #999;
+            font-size: clamp(1.2em, 5vw, 1.8em);
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        @media (max-width: 380px) {
             body {
-                padding: 10px;
+                padding: 8px;
             }
 
             .container {
-                border-radius: 20px;
+                padding: 16px;
+                border-radius: 16px;
             }
 
             .option {
                 min-height: 50px;
-            }
-
-            .screenshot-grid {
-                grid-template-columns: 1fr;
+                padding: 14px 40px 14px 14px;
             }
         }
 
-        @media (min-width: 768px) {
-            .time-stats {
+        @media (min-width: 600px) {
+            .screenshot-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+        }
 
-            .comparison-box {
-                grid-template-columns: repeat(2, 1fr);
+        @media (hover: none) {
+            .option:hover {
+                background: rgba(255, 255, 255, 0.05);
+                transform: none;
             }
         }
     </style>
 </head>
 <body>
+    <div class="question-feedback" id="questionFeedback">✓ Analisando...</div>
+
     <div class="container">
+        <div class="authority-badge">
+            <p>🏆 Método criado por ProPlayer Top 3 Mundial</p>
+        </div>
+
         <div class="header">
             <h1>⚽ Análise de Habilidade FIFA ⚽</h1>
-            <p>Descubra seus pontos fortes e áreas para melhorar</p>
+            <p>Descubra EXATAMENTE onde você está travado e o que fazer para evoluir</p>
         </div>
 
         <div class="start-screen" id="startScreen">
+            <div class="countdown-timer">
+                <p>⚠️ OFERTA BLACK FRIDAY TERMINA EM:</p>
+                <div class="timer-display">
+                    <div class="timer-block">
+                        <span class="timer-number" id="hours">23</span>
+                        <span class="timer-label">Horas</span>
+                    </div>
+                    <div class="timer-block">
+                        <span class="timer-number" id="minutes">59</span>
+                        <span class="timer-label">Min</span>
+                    </div>
+                    <div class="timer-block">
+                        <span class="timer-number" id="seconds">59</span>
+                        <span class="timer-label">Seg</span>
+                    </div>
+                </div>
+            </div>
+
             <div class="start-icon">🎮</div>
-            <h2 style="font-size: clamp(1.4em, 5vw, 1.9em); margin-bottom: 20px; color: #ffd700;">Teste Gratuito de Habilidade</h2>
-            <p style="font-size: clamp(0.95em, 3vw, 1.15em); margin-bottom: 20px; line-height: 1.6;">8 perguntas para identificar exatamente onde você está e o que treinar para evoluir mais rápido.</p>
+            <h2 style="font-size: clamp(1.3em, 5.2vw, 1.9em); margin-bottom: 18px; color: #ffd700; line-height: 1.3;">Descubra Em 2 Minutos O QUE Te Impede de Subir de Divisão</h2>
+            <p style="font-size: clamp(0.9em, 3.3vw, 1.15em); margin-bottom: 18px; line-height: 1.6; color: #ddd;">8 perguntas estratégicas para identificar seus pontos fracos e receber um plano de ação personalizado.</p>
             
             <div class="info-box">
                 <div class="info-box-title">📊 O que você vai receber:</div>
                 <p style="color: #ddd;">
-                    ✅ Análise detalhada das suas habilidades<br>
-                    ✅ Diagnóstico de tempo perdido<br>
-                    ✅ 3 dicas práticas personalizadas<br>
-                    ✅ Resultado instantâneo e visual
+                    ✅ Análise detalhada das suas 6 habilidades principais<br>
+                    ✅ Diagnóstico exato de quanto tempo você já perdeu<br>
+                    ✅ Top 3 prioridades para treinar AGORA<br>
+                    ✅ Comparação com jogadores da sua divisão<br>
+                    ✅ Resultado instantâneo e 100% visual
                 </p>
             </div>
 
-            <div style="background: rgba(255, 215, 0, 0.12); border: 2px solid #ffd700; border-radius: 14px; padding: clamp(15px, 4vw, 22px); margin: 25px 0;">
-                <p style="color: #ffd700; font-size: clamp(0.95em, 3vw, 1.1em); font-weight: bold; margin-bottom: 10px;">⚠️ Seja honesto nas respostas</p>
-                <p style="color: #ddd; font-size: clamp(0.85em, 2.8vw, 0.98em); line-height: 1.6;">Quanto mais honesto, mais preciso será seu diagnóstico e melhores serão as dicas personalizadas.</p>
+            <div style="background: rgba(255, 215, 0, 0.12); border: 2px solid #ffd700; border-radius: 12px; padding: 18px; margin: 20px 0;">
+                <p style="color: #ffd700; font-size: clamp(0.9em, 3.3vw, 1.1em); font-weight: bold; margin-bottom: 8px;">⚠️ Seja honesto nas respostas</p>
+                <p style="color: #ddd; font-size: clamp(0.8em, 3vw, 0.98em); line-height: 1.6;">Quanto mais honesto, mais preciso será seu diagnóstico e melhores serão as dicas personalizadas.</p>
             </div>
 
             <div class="trust-badges">
@@ -821,7 +1032,7 @@
                 <div class="badge">📊 Resultado detalhado</div>
             </div>
 
-            <button class="cta-button" onclick="startQuiz()">🚀 Começar Análise</button>
+            <button class="cta-button" onclick="startQuiz()">🚀 Começar Análise Gratuita</button>
         </div>
 
         <div id="quizContent" style="display: none;">
@@ -834,11 +1045,11 @@
             <div class="analyzing-screen" id="analyzingScreen">
                 <div class="loading-animation">⚽</div>
                 <h3>Analisando suas respostas...</h3>
-                <p style="margin-top: 20px; color: #aaa;">Comparando com banco de dados de jogadores</p>
+                <p class="analyzing-message" id="analyzingMessage">Processando dados...</p>
             </div>
 
             <div class="result-container" id="resultContainer">
-                <h2 style="text-align: center; color: #ffd700; margin-bottom: 30px;">📊 Seu Perfil de Jogador</h2>
+                <h2 style="text-align: center; color: #ffd700; margin-bottom: 25px;">📊 Seu Perfil de Jogador</h2>
                 
                 <div class="comparison-box">
                     <div class="comparison-item highlight">
@@ -872,17 +1083,17 @@
 
                     <p>Isso é <strong id="hoursText">X HORAS</strong> da sua vida tentando descobrir sozinho o que outros jogadores aprenderam em 2 semanas.</p>
                     
-                    <p>Enquanto isso, jogadores que estavam PIOR que você subiram 2-3 divisões no mesmo período.</p>
+                    <p><strong>Enquanto você perdeu esse tempo...</strong> Jogadores que estavam PIOR que você aplicaram o método correto e subiram 2-3 divisões no mesmo período.</p>
                     
-                    <p style="font-size: clamp(1.05em, 3.8vw, 1.3em); color: #ff6464; font-weight: bold; margin-top: 20px;">Até quando você vai continuar fazendo a mesma merda esperando resultados diferentes?</p>
+                    <p style="font-size: clamp(1em, 4vw, 1.3em); color: #ffd700; font-weight: bold; margin-top: 18px;">A diferença? Eles pararam de tentar sozinhos e seguiram um sistema testado.</p>
                 </div>
 
                 <div class="strategic-print">
-                    <h3 style="color: #4caf50; margin-bottom: 15px;">📱 Prova Real</h3>
+                    <h3 style="color: #4caf50; margin-bottom: 12px;">📱 Prova Real</h3>
                     <img src="https://i.ibb.co/Xw8Vx3W/Captura-de-Tela-2025-11-01-a-s-17-26-18.png" alt="Nathan">
                     <div class="strategic-print-caption">
                         <strong>Nathan</strong> estava TRAVADO exatamente como você. Aplicou o método e em 3 semanas fez 15 wins "fácil" (palavras dele).<br><br>
-                        Enquanto isso, você vai continuar sofrendo sozinho?
+                        A diferença entre você e ele? <strong>Ele decidiu parar de tentar sozinho.</strong>
                     </div>
                 </div>
 
@@ -890,11 +1101,11 @@
                     <h3>⚠️ REALIDADE DURA:</h3>
                     <p>Baseado nas suas respostas, você está cometendo os <strong>mesmos erros que 83% dos jogadores da sua divisão</strong> fazem.</p>
                     
-                    <p>O problema? Sem método correto, você pode continuar tentando sozinho e daqui <strong>3 meses estar no MESMO lugar...</strong></p>
+                    <p>O problema? Sem método correto, você pode continuar tentando sozinho e daqui <strong>3 meses estar no MESMO lugar</strong> (ou pior, ainda mais frustrado).</p>
                     
-                    <p>Ou você pode seguir o passo-a-passo testado por <strong>500+ jogadores</strong> que já estavam exatamente onde você está - e hoje dominam suas divisões.</p>
+                    <p>Ou você pode seguir o passo-a-passo testado por <strong>3.300+ jogadores</strong> que já estavam exatamente onde você está - e hoje dominam suas divisões.</p>
                     
-                    <p style="color: #ffd700; font-weight: bold; font-size: clamp(1.05em, 3.5vw, 1.25em); margin-top: 20px;">A escolha é sua. Mas o relógio tá correndo.</p>
+                    <p style="color: #ffd700; font-weight: bold; font-size: clamp(1em, 3.8vw, 1.25em); margin-top: 18px;">A escolha é sua. Mas o relógio tá correndo.</p>
                 </div>
 
                 <div class="priority-tips" id="priorityTips">
@@ -905,14 +1116,13 @@
                 <div class="soft-pitch">
                     <h4>⚠️ Aqui está a verdade que ninguém te conta:</h4>
                     <p>Você pode continuar <strong>tentando descobrir sozinho</strong> (como fez até agora) e levar MESES para subir 1 divisão...</p>
-                    <p>Ou pode seguir o <strong>método testado por 500+ jogadores</strong> que já estavam exatamente onde você está - e hoje dominam suas divisões.</p>
-                    <p style="font-size: clamp(0.95em, 3.2vw, 1.1em); color: #ffd700; font-weight: bold; margin-top: 25px;">A escolha é sua. Mas os resultados não mentem 👇</p>
-                    <button class="learn-more-btn" onclick="showCourseInfo()">🚀 QUERO MELHORAR RÁPIDO</button>
+                    <p>Ou pode seguir o <strong>método testado por 3.300+ jogadores</strong> que já estavam exatamente onde você está - e hoje dominam suas divisões.</p>
+                    <p style="font-size: clamp(0.9em, 3.5vw, 1.1em); color: #ffd700; font-weight: bold; margin-top: 22px;">A escolha é sua. Mas os resultados não mentem 👇</p>
                 </div>
 
-                <div id="courseInfo" style="display: none; margin-top: 30px;">
-                    <div style="background: rgba(0, 0, 0, 0.3); border-radius: 18px; padding: clamp(20px, 5vw, 35px); margin-bottom: 30px;">
-                        <h3 style="color: #ffd700; text-align: center; margin-bottom: 25px; font-size: clamp(1.3em, 5vw, 1.7em);">📱 Mais Prints Reais de Alunos</h3>
+                <div style="margin-top: 25px;">
+                    <div style="background: rgba(0, 0, 0, 0.3); border-radius: 16px; padding: 25px 20px; margin-bottom: 25px;">
+                        <h3 style="color: #ffd700; text-align: center; margin-bottom: 22px; font-size: clamp(1.2em, 5vw, 1.7em); line-height: 1.3;">📱 Mais Prints Reais de Alunos</h3>
                         
                         <div class="screenshot-grid">
                             <div class="screenshot-card">
@@ -948,13 +1158,33 @@
                             </div>
                         </div>
 
-                        <p style="text-align: center; color: #aaa; font-size: clamp(0.8em, 2.5vw, 0.95em); margin-top: 20px;">
+                        <p style="text-align: center; color: #aaa; font-size: clamp(0.75em, 2.8vw, 0.95em); margin-top: 18px;">
                             ☝️ Prints reais de mensagens recebidas
                         </p>
                     </div>
 
-                    <div style="background: rgba(255, 215, 0, 0.05); border: 2px solid rgba(255, 215, 0, 0.3); border-radius: 18px; padding: clamp(20px, 5vw, 30px); margin: 25px 0;">
-                        <h3 style="color: #ffd700; text-align: center; margin-bottom: 25px; font-size: clamp(1.2em, 4.5vw, 1.6em);">❓ Perguntas Frequentes</h3>
+                    <div class="creator-badge">
+                        <h3>🏆 Criado por ProPlayer Top 3 Mundial</h3>
+                        <p>Este método NÃO foi criado por qualquer pessoa. Foi desenvolvido por um <strong>ProPlayer Top 3 Mundial</strong>, com anos de experiência competitiva no mais alto nível.</p>
+                        
+                        <div class="stats-highlight">
+                            <div class="stat-box">
+                                <div class="stat-number">TOP 3</div>
+                                <div class="stat-label">Ranking Mundial</div>
+                            </div>
+                            <div class="stat-box">
+                                <div class="stat-number">3.300+</div>
+                                <div class="stat-label">Alunos Formados</div>
+                            </div>
+                        </div>
+
+                        <p style="margin-top: 18px;">Não é teoria de YouTube. É o <strong>mesmo método usado nos campeonatos profissionais</strong>, adaptado para você dominar seu nível.</p>
+                        
+                        <p style="color: #4caf50; font-weight: bold; font-size: clamp(0.95em, 3.5vw, 1.15em); margin-top: 18px;">Mais de 3.300 jogadores já transformaram seu jogo com este treinamento.</p>
+                    </div>
+
+                    <div style="background: rgba(255, 215, 0, 0.05); border: 2px solid rgba(255, 215, 0, 0.3); border-radius: 16px; padding: 25px 20px; margin: 22px 0;">
+                        <h3 style="color: #ffd700; text-align: center; margin-bottom: 22px; font-size: clamp(1.1em, 4.8vw, 1.6em); line-height: 1.3;">❓ Perguntas Frequentes</h3>
                         
                         <div class="objection-killer">
                             <h4>🕐 "Não tenho tempo pra curso"</h4>
@@ -968,7 +1198,7 @@
 
                         <div class="objection-killer">
                             <h4>💰 "Tá caro"</h4>
-                            <p>R$ 20,69 por mês = 1 lanche do McDonald's. Quantas horas você já perdeu tentando sozinho? Quanto vale subir 2-3 divisões? A pergunta certa é: quanto custa continuar travado?</p>
+                            <p>R$ 12,10 por mês = menos que 1 lanche. Quantas horas você já perdeu tentando sozinho? Quanto vale subir 2-3 divisões? A pergunta certa é: quanto custa continuar travado? E olha, esse é o preço de BLACK FRIDAY - depois volta ao normal.</p>
                         </div>
 
                         <div class="objection-killer">
@@ -990,21 +1220,22 @@
 
                         <div class="option-box good">
                             <h4>OPÇÃO 2: Seguir o método testado</h4>
-                            <p>→ Usado por 500+ jogadores com resultados comprovados.<br>
+                            <p>→ Criado por ProPlayer Top 3 Mundial.<br>
+                            → Usado por 3.300+ jogadores com resultados comprovados.<br>
                             → Evolução visível em 2-4 semanas.<br>
                             → Suporte direto quando travar.<br>
                             → Garantia de 7 dias (risco zero).</p>
                         </div>
                     </div>
 
-                    <div style="background: rgba(255, 255, 255, 0.04); border: 2px solid rgba(255, 215, 0, 0.3); border-radius: 18px; padding: clamp(20px, 5vw, 35px);">
-                        <h3 style="color: #ffd700; text-align: center; margin-bottom: 25px; font-size: clamp(1.3em, 5vw, 1.7em);">🎓 Programa de Treinamento Completo</h3>
+                    <div style="background: rgba(255, 255, 255, 0.04); border: 2px solid rgba(255, 215, 0, 0.3); border-radius: 16px; padding: 25px 20px;">
+                        <h3 style="color: #ffd700; text-align: center; margin-bottom: 22px; font-size: clamp(1.2em, 5vw, 1.7em); line-height: 1.3;">🎓 Programa de Treinamento Completo</h3>
                         
-                        <div style="margin: 25px 0;">
-                            <p style="color: #ddd; line-height: 1.8; margin-bottom: 15px; font-size: clamp(0.9em, 3vw, 1.05em);">
-                                Mais de 500 jogadores usaram este método para subir de divisão. O que está incluso:
+                        <div style="margin: 22px 0;">
+                            <p style="color: #ddd; line-height: 1.8; margin-bottom: 12px; font-size: clamp(0.85em, 3.3vw, 1.05em);">
+                                Mais de 3.300 jogadores usaram este método para subir de divisão. O que está incluso:
                             </p>
-                            <ul style="color: #ddd; line-height: 2; list-style: none; padding-left: 0; font-size: clamp(0.85em, 2.8vw, 0.98em);">
+                            <ul style="color: #ddd; line-height: 2; list-style: none; padding-left: 0; font-size: clamp(0.8em, 3vw, 0.98em);">
                                 <li>✅ 7 módulos completos (fundamentos ao avançado)</li>
                                 <li>✅ Táticas META atualizadas semanalmente</li>
                                 <li>✅ Grupo VIP no Discord</li>
@@ -1014,25 +1245,46 @@
                             </ul>
                         </div>
 
-                        <div style="text-align: center; margin: 30px 0;">
-                            <div style="font-size: clamp(1.8em, 7vw, 2.8em); color: #4caf50; font-weight: bold; margin-bottom: 5px;">
-                                12x R$ 20,69
+                        <div style="text-align: center; margin: 25px 0;">
+                            <div style="background: linear-gradient(135deg, #ff6464, #ff8a80); padding: 10px 22px; border-radius: 10px; display: inline-block; margin-bottom: 12px; animation: pulse 2s infinite;">
+                                <p style="color: #fff; font-weight: bold; font-size: clamp(0.9em, 3.3vw, 1.15em); margin: 0;">🔥 BLACK FRIDAY - PREÇO PROMOCIONAL</p>
                             </div>
-                            <p style="font-size: clamp(0.9em, 3vw, 1.05em); color: #ddd; margin-top: 10px;">ou R$ 200,00 à vista</p>
+                            <div>
+                                <span class="price-anchor">De R$ 297,00</span>
+                            </div>
+                            <div style="font-size: clamp(1.6em, 8vw, 2.8em); color: #4caf50; font-weight: bold; margin-bottom: 5px;">
+                                12x R$ 12,10
+                            </div>
+                            <p style="font-size: clamp(0.85em, 3.3vw, 1.05em); color: #ddd; margin-top: 8px;">ou R$ 117,00 à vista</p>
+                            <p style="color: #ff6464; font-weight: bold; font-size: clamp(0.8em, 3vw, 0.95em); margin-top: 10px; animation: blink 1.5s infinite;">⚠️ Oferta termina em breve - Últimas vagas!</p>
                         </div>
 
-                        <div style="background: rgba(76, 175, 80, 0.15); border: 2px solid #4caf50; border-radius: 14px; padding: clamp(15px, 4vw, 22px); margin: 20px 0;">
-                            <p style="color: #4caf50; font-weight: bold; text-align: center; margin-bottom: 10px; font-size: clamp(0.95em, 3vw, 1.1em);">🛡️ Garantia de 7 Dias</p>
-                            <p style="color: #ddd; text-align: center; font-size: clamp(0.85em, 2.8vw, 0.98em);">Se não gostar, devolvemos 100% do valor. Sem perguntas.</p>
+                        <div class="guarantee-box">
+                            <h3>🛡️ Se você não melhorar em 7 dias<br>reembolsamos seu dinheiro</h3>
+                            <p>Teste o método por 7 dias completos. Se não ver melhora no seu jogo, devolvemos <strong>100% do valor investido</strong>.</p>
+                            <p style="color: #ddd; font-size: clamp(0.85em, 3.2vw, 1.05em); margin-top: 12px;">Sem perguntas. Sem burocracias. Simples assim.</p>
                         </div>
 
                         <button class="cta-button" onclick="goToCheckout()">
-                            Quero Melhorar Agora
+                            🔥 Garantir Minha Vaga na Black Friday
                         </button>
 
-                        <p style="text-align: center; margin-top: 15px; color: #aaa; font-size: clamp(0.75em, 2.3vw, 0.9em);">
+                        <p style="text-align: center; margin-top: 12px; color: #aaa; font-size: clamp(0.7em, 2.5vw, 0.9em);">
                             Acesso liberado imediatamente após pagamento
                         </p>
+                    </div>
+
+                    <div class="final-choice">
+                        <h3>⏰ ÚLTIMA DECISÃO:</h3>
+                        <p>Você está a <strong>1 clique</strong> de distância de ter o mesmo método que 3.300+ jogadores usaram para subir de divisão.</p>
+                        <p>Ou você pode fechar essa página e continuar tentando sozinho.</p>
+                        <p><strong>Mas lembre-se:</strong> Daqui 3 meses, você vai estar onde?</p>
+                        <p style="color: #4caf50; font-weight: bold; font-size: clamp(1.05em, 4.2vw, 1.35em); margin-top: 20px;">Jogadores que agiram HOJE já estão vendo resultados.</p>
+                        <p style="color: #ff6464; font-weight: bold; margin-top: 15px;">Os que ficaram "pensando" continuam travados.</p>
+                        
+                        <button class="cta-button" onclick="goToCheckout()" style="margin-top: 25px;">
+                            🔥 Garantir Minha Vaga na Black Friday
+                        </button>
                     </div>
                 </div>
             </div>
@@ -1040,6 +1292,33 @@
     </div>
 
     <script>
+        // Countdown Timer
+        function startCountdown() {
+            const endTime = new Date().getTime() + (24 * 60 * 60 * 1000);
+            
+            const timer = setInterval(function() {
+                const now = new Date().getTime();
+                const distance = endTime - now;
+                
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                
+                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+                document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+                document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+                
+                if (distance < 0) {
+                    clearInterval(timer);
+                    document.getElementById('hours').textContent = '00';
+                    document.getElementById('minutes').textContent = '00';
+                    document.getElementById('seconds').textContent = '00';
+                }
+            }, 1000);
+        }
+
+        startCountdown();
+
         const questions = [
             {
                 question: "Há quanto tempo você está TRAVADO na mesma divisão?",
@@ -1222,6 +1501,12 @@
             const option = questions[currentQuestion].options[optionIndex];
             totalScore += option.points;
             
+            const feedback = document.getElementById('questionFeedback');
+            feedback.style.display = 'block';
+            setTimeout(() => {
+                feedback.style.display = 'none';
+            }, 600);
+            
             if (currentQuestion === 0 && option.timeMonths) {
                 timeStuck = option.timeMonths;
             }
@@ -1246,9 +1531,29 @@
             document.getElementById('progressBar').style.width = '100%';
             document.getElementById('analyzingScreen').classList.add('active');
             
+            const messages = [
+                'Processando suas respostas...',
+                'Comparando com 3.300+ jogadores...',
+                'Calculando suas áreas prioritárias...',
+                'Preparando seu plano personalizado...'
+            ];
+            
+            let messageIndex = 0;
+            const messageElement = document.getElementById('analyzingMessage');
+            
+            const messageInterval = setInterval(() => {
+                if (messageIndex < messages.length) {
+                    messageElement.textContent = messages[messageIndex];
+                    messageIndex++;
+                } else {
+                    clearInterval(messageInterval);
+                }
+            }, 1200);
+            
             setTimeout(() => {
+                clearInterval(messageInterval);
                 showResults();
-            }, 2500);
+            }, 5000);
         }
 
         function showResults() {
@@ -1320,8 +1625,8 @@
                 html += `
                     <div class="tip-item">
                         <div class="tip-title">${index + 1}. ${tip.title}</div>
-                        <p style="color: #ddd; margin: 10px 0; font-size: clamp(0.85em, 2.8vw, 0.95em);">${tip.why}</p>
-                        <p style="color: #4caf50; margin-top: 12px; font-weight: 500; font-size: clamp(0.85em, 2.8vw, 0.95em);"><strong>Ação:</strong> ${tip.tip}</p>
+                        <p style="color: #ddd; margin: 8px 0; font-size: clamp(0.8em, 3vw, 0.95em);">${tip.why}</p>
+                        <p style="color: #4caf50; margin-top: 10px; font-weight: 500; font-size: clamp(0.8em, 3vw, 0.95em);"><strong>Ação:</strong> ${tip.tip}</p>
                     </div>
                 `;
             });
@@ -1329,14 +1634,8 @@
             container.innerHTML = html;
         }
 
-        function showCourseInfo() {
-            const courseInfo = document.getElementById('courseInfo');
-            courseInfo.style.display = 'block';
-            courseInfo.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-
         function goToCheckout() {
-            window.location.href = 'https://pay.kiwify.com.br/YMlp0RA?afid=IgQ4R3ua';
+            window.location.href = 'https://pay.kiwify.com.br/xfMoSbP?afid=IgQ4R3ua';
         }
     </script>
 </body>
