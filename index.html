@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Quiz FIFA - Análise de Habilidade</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚽</text></svg>">
     <style>
         * {
             margin: 0;
@@ -210,20 +211,30 @@
             position: fixed;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%);
-            background: rgba(76, 175, 80, 0.95);
-            padding: 20px 40px;
-            border-radius: 12px;
-            font-size: clamp(1.2em, 5vw, 1.8em);
-            font-weight: bold;
+            transform: translate(-50%, -50%) scale(0.8);
+            background: transparent;
+            padding: 0;
+            border-radius: 50%;
+            font-size: clamp(3em, 12vw, 5em);
             z-index: 1000;
             display: none;
-            animation: fadeInOut 0.6s ease;
+            opacity: 0;
+            animation: checkmark 0.4s ease forwards;
         }
 
-        @keyframes fadeInOut {
-            0%, 100% { opacity: 0; }
-            50% { opacity: 1; }
+        @keyframes checkmark {
+            0% { 
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.5);
+            }
+            50% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.2);
+            }
+            100% { 
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(1);
+            }
         }
 
         .question-number {
@@ -975,7 +986,7 @@
     </style>
 </head>
 <body>
-    <div class="question-feedback" id="questionFeedback">✓ Analisando...</div>
+    <div class="question-feedback" id="questionFeedback">✓</div>
 
     <div class="container">
         <div class="authority-badge">
@@ -988,24 +999,6 @@
         </div>
 
         <div class="start-screen" id="startScreen">
-            <div class="countdown-timer">
-                <p>⚠️ OFERTA BLACK FRIDAY TERMINA EM:</p>
-                <div class="timer-display">
-                    <div class="timer-block">
-                        <span class="timer-number" id="hours">23</span>
-                        <span class="timer-label">Horas</span>
-                    </div>
-                    <div class="timer-block">
-                        <span class="timer-number" id="minutes">59</span>
-                        <span class="timer-label">Min</span>
-                    </div>
-                    <div class="timer-block">
-                        <span class="timer-number" id="seconds">59</span>
-                        <span class="timer-label">Seg</span>
-                    </div>
-                </div>
-            </div>
-
             <div class="start-icon">🎮</div>
             <h2 style="font-size: clamp(1.3em, 5.2vw, 1.9em); margin-bottom: 18px; color: #ffd700; line-height: 1.3;">Descubra Em 2 Minutos O QUE Te Impede de Subir de Divisão</h2>
             <p style="font-size: clamp(0.9em, 3.3vw, 1.15em); margin-bottom: 18px; line-height: 1.6; color: #ddd;">8 perguntas estratégicas para identificar seus pontos fracos e receber um plano de ação personalizado.</p>
@@ -1246,7 +1239,24 @@
                         </div>
 
                         <div style="text-align: center; margin: 25px 0;">
-                            <div style="background: linear-gradient(135deg, #ff6464, #ff8a80); padding: 10px 22px; border-radius: 10px; display: inline-block; margin-bottom: 12px; animation: pulse 2s infinite;">
+                            <div class="countdown-timer" style="margin-bottom: 20px;">
+                                <p>⚠️ OFERTA BLACK FRIDAY TERMINA EM:</p>
+                                <div class="timer-display">
+                                    <div class="timer-block">
+                                        <span class="timer-number" id="hours">23</span>
+                                        <span class="timer-label">Horas</span>
+                                    </div>
+                                    <div class="timer-block">
+                                        <span class="timer-number" id="minutes">59</span>
+                                        <span class="timer-label">Min</span>
+                                    </div>
+                                    <div class="timer-block">
+                                        <span class="timer-number" id="seconds">59</span>
+                                        <span class="timer-label">Seg</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="background: linear-gradient(135deg, #ff6464, #ff8a80); padding: 10px 22px; border-radius: 10px; display: inline-block; margin-bottom: 12px;">
                                 <p style="color: #fff; font-weight: bold; font-size: clamp(0.9em, 3.3vw, 1.15em); margin: 0;">🔥 BLACK FRIDAY - PREÇO PROMOCIONAL</p>
                             </div>
                             <div>
@@ -1501,11 +1511,12 @@
             const option = questions[currentQuestion].options[optionIndex];
             totalScore += option.points;
             
+            // Feedback visual sutil
             const feedback = document.getElementById('questionFeedback');
             feedback.style.display = 'block';
             setTimeout(() => {
                 feedback.style.display = 'none';
-            }, 600);
+            }, 400);
             
             if (currentQuestion === 0 && option.timeMonths) {
                 timeStuck = option.timeMonths;
@@ -1518,7 +1529,7 @@
             currentQuestion++;
             setTimeout(() => {
                 loadQuestion();
-            }, 300);
+            }, 200);
         }
 
         function updateProgress() {
